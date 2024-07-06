@@ -4,19 +4,7 @@ const Navbar = () => {
   return (
     <>
       <section className="navbar">
-        <div className="mainNav">
-          <Link to="/">
-            <img className="logo" src="" alt="logo" />
-          </Link>
-          <Link className="links" to="/">
-            <p className="pageName">Rewatchables</p>
-          </Link>
-          <img
-            className="menuIcon"
-            src=""
-            alt="menu icon"
-          />
-        </div>
+
           <div className="menu">
             <Link className="links" to="/">
               <p className="menuItem">Home</p>
