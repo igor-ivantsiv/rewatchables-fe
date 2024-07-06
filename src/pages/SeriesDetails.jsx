@@ -1,5 +1,7 @@
 const SeriesDetails = () => {
-  return <></>;
+  return <>
+  <h1>Series details</h1>
+  </>;
 };
 
 export default SeriesDetails;

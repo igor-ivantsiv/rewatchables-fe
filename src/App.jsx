@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
 import AddRewatchable from "./pages/AddRewatchable";
+import Suggestions from "./pages/Suggestions";
 import Series from "./pages/Series";
 import Movies from "./pages/Movies";
 import SeriesDetails from "./pages/SeriesDetails";

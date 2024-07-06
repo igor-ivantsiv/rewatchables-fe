@@ -1,5 +1,9 @@
 const AddRewatchable = () => {
-  return <></>;
+  return (
+    <>
+      <h1>Add a Rewatchable</h1>
+    </>
+  );
 };
 
 export default AddRewatchable;
