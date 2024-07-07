@@ -2,46 +2,89 @@ import { Button, Center, Group, MultiSelect, NumberInput, Rating, SimpleGrid, St
 import { YearPickerInput, TimeInput } from "@mantine/dates";
 import { IconCalendar, IconClock } from "@tabler/icons-react";
 import { useState } from "react";
+import { API_URL } from "../helpers/constants";
+import { useNavigate } from "react-router-dom";
 
-const Form = ( {action, type, initialState} ) => {
+const Form = ( {action, type, initialState, id} ) => {
 
     const [formInput, setFormInput] = useState(initialState);
 
-    const handleTextInput = (event) => {
-        console.log(event.target.value)
+    const navigate = useNavigate();
+
+    
+    // handle any type of input, 
+    // use callback with name included for special input types
+    const handleInput = (event, name) => {
+
+        // if name was not provided, event has target property -> set name && value
+        // else, the triggered event is already the value
+        if (!name) {
+            name = event.target.name
+            event = event.target.value
+        }
+
+        // update state of form 
         setFormInput((prevState) => ({
             ...prevState,
-            [event.target.name]: event.target.value,
+            [name]: event,
         }));
     }
 
-    const handleMultiSelectInput = (name, change) => {
-        console.log(`MultiSelect ${name}`, change);
+
+    // handle nested properties (episodes / seasons)
+    const handleNestedInput = (event, name) => {
+
         setFormInput((prevState) => ({
             ...prevState,
-            [name]: change,
+            length: {
+                ...prevState.length,
+                [name]: event,
+            }
         }));
-    };
-
-    const handleYearPickerInput = (selectedYear) => {
-        console.log('YearPicker Change:', selectedYear); // Log selected year
-        const year = selectedYear.getFullYear();
-        console.log("Year: ", year)
-        console.log(typeof year)
-    };
-
-    const handleTimeChange = (event) => {
-        console.log("Time change: ", event.target.value);
-        console.log("Time name: ", event.target.name);
-        console.log(typeof event.target.value);
     }
 
-    const handleRatingChange = (event) => {
-        console.log("Rating: ", event)
-    }
-
-    const handleSubmit = (event) => {
+    const handleSubmit = async(event) => {
         event.preventDefault();
+
+        // convert year Date object back to number
+        const yearNum = formInput.year.getFullYear();
+
+        // data to be sent with request, converted year property
+        const data = {
+            ...formInput,
+            year: yearNum,
+        }
+
+        // get correct url for either post of put request
+        let url;
+
+        action === "POST" ?
+        url = `${API_URL}/${type}` :
+        url = `${API_URL}/${type}/${id}`;
+
+        try {
+
+            const response = await fetch(url, {
+                method: action,
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error: ${response}`);
+            }
+
+            //console.log("Succes response: ", await response.json());
+
+            const newData = await response.json()
+
+            navigate(`/${type}/${newData.id}`)
+
+        } catch (error) {
+            console.log("An error occured: ", error);
+        } 
     }
 
     const genreOptions = [
@@ -68,7 +111,7 @@ const Form = ( {action, type, initialState} ) => {
 
     return ( 
     <>
-        <form className="form">
+        <form className="form" onSubmit={handleSubmit}>
             <Stack
                 align="stretch"
                 justify="center"
@@ -79,7 +122,7 @@ const Form = ( {action, type, initialState} ) => {
                     label="Title"
                     name="title"
                     value={formInput.title}
-                    onChange={handleTextInput}
+                    onChange={handleInput}
                 />
                 <MultiSelect 
                     radius="lg"
@@ -87,7 +130,7 @@ const Form = ( {action, type, initialState} ) => {
                     data={genreOptions}
                     name="genre"
                     value={formInput.genre}
-                    onChange={(change) => handleMultiSelectInput("genre", change)}
+                    onChange={(event) => handleInput(event, "genre")}
                     data-multiselect
                 />
                 <TextInput 
@@ -95,7 +138,7 @@ const Form = ( {action, type, initialState} ) => {
                     label="Director"
                     name="director"
                     value={formInput.director}
-                    onChange={handleTextInput}
+                    onChange={handleInput}
                 />
                 <Group>
                     <div>Rating: </div>
@@ -103,7 +146,7 @@ const Form = ( {action, type, initialState} ) => {
                         fractions={4} 
                         name="rating"
                         value={formInput.rating}
-                        onChange={handleRatingChange}
+                        onChange={(event) => handleInput(event, "rating")}
                     />
                 </Group>
                 <YearPickerInput
@@ -115,10 +158,10 @@ const Form = ( {action, type, initialState} ) => {
                     maxDate={new Date(2025, 1)}
                     name="year"
                     value={formInput.year}
-                    onChange={handleYearPickerInput}
+                    onChange={(event) => handleInput(event, "year")}
                 />
                 {
-                    type === "movie" ?
+                    type === "movies" ?
                     <TimeInput 
                         radius="lg"
                         label="Length"
@@ -128,7 +171,7 @@ const Form = ( {action, type, initialState} ) => {
                         maxTime="10:00"
                         name="length"
                         value={formInput.length}
-                        onChange={handleTextInput}
+                        onChange={handleInput}
                     /> :
                     <SimpleGrid cols={2}>
                         <NumberInput 
@@ -136,28 +179,28 @@ const Form = ( {action, type, initialState} ) => {
                             radius="lg"
                             min={1}
                             max={999}
-                            name="length.seasons"
+                            name="seasons"
                             value={formInput.length.seasons}
-                            onChange={handleTextInput}
+                            onChange={(event) => handleNestedInput(event, "seasons")}
                         />
                         <NumberInput 
                             label="Episodes"
                             radius="lg"
                             min={1}
                             max={9999}
-                            name="length.episodes"
+                            name="episodes"
                             value={formInput.length.episodes}
-                            onChange={handleTextInput}
+                            onChange={(event) => handleNestedInput(event, "episodes")}
                         />
                     </SimpleGrid>
                 } 
                 <Textarea 
                     label="Description"
-                    description="Add a small description of your rewatchable"
+                    description="Add a small description of your Rewatchable"
                     radius="lg"
                     name="description"
                     value={formInput.description}
-                    onChange={handleTextInput}
+                    onChange={handleInput}
                 />
                 <TextInput 
                     radius="lg"
@@ -165,7 +208,7 @@ const Form = ( {action, type, initialState} ) => {
                     description="Add a url path to the cover image for your Rewatchable"
                     name="image"
                     value={formInput.image}
-                    onChange={handleTextInput}
+                    onChange={handleInput}
                 />
                 <MultiSelect 
                     radius="lg"
@@ -173,21 +216,21 @@ const Form = ( {action, type, initialState} ) => {
                     data={availabilityOptions}
                     name="availableOn"
                     value={formInput.availableOn}
-                    onChange={(change) => handleMultiSelectInput("availableOn", change)}
+                    onChange={(event) => handleInput(event, "availableOn")}
                 />
                 <TextInput 
                     radius="lg"
                     label="Trailer"
                     name="trailer"
                     value={formInput.trailer}
-                    onChange={handleTextInput}
+                    onChange={handleInput}
                 />
                 <TextInput 
                     radius="lg"
                     label="Recap"
                     name="recap"
                     value={formInput.recap}
-                    onChange={handleTextInput}
+                    onChange={handleInput}
                 />
                 
             </Stack>

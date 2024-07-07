@@ -19,7 +19,7 @@ const AddMoviePage = () => {
     return (
         <>
             <h1>Add Movie</h1>
-            <Form type="movie" initialState={initialState} />
+            <Form action="POST" type="movies" initialState={initialState} />
         </>
     );
 }
