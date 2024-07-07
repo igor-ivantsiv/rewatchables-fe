@@ -1,7 +1,7 @@
 import { Button, Center, Group, MultiSelect, NumberInput, Rating, SimpleGrid, Stack, Textarea, TextInput } from "@mantine/core";
 import { YearPickerInput, TimeInput } from "@mantine/dates";
 import { IconCalendar, IconClock } from "@tabler/icons-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { API_URL } from "../helpers/constants";
 import { useNavigate } from "react-router-dom";
 
@@ -10,6 +10,13 @@ const Form = ( {action, type, initialState, id} ) => {
     const [formInput, setFormInput] = useState(initialState);
 
     const navigate = useNavigate();
+
+    // ensure latest 'initialState' is used for input fields
+    useEffect(() => {
+        if (initialState) {
+            setFormInput(initialState)
+        } 
+    }, [initialState]);
 
     
     // handle any type of input, 

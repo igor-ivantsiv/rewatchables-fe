@@ -13,6 +13,7 @@ import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 import AddMoviePage from "./pages/AddMoviePage";
 import AddSeriesPage from "./pages/AddSeriesPage";
+import EditPage from "./pages/EditPage";
 
 function App() {
   return (
@@ -28,11 +29,11 @@ function App() {
 
         <Route path="/series" element={<Series />} />
         <Route path="/series/:seriesId" element={<SeriesDetails />} />
-        <Route path="/series/:seriesId/edit" element={<EditSeries />} />
+        <Route path="/series/:id/edit" element={<EditPage type="series" />} />
 
         <Route path="/movies" element={<Movies />} />
         <Route path="/movies/:moviesId" element={<MoviesDetails />} />
-        <Route path="/movies/:moviesId/edit" element={<EditMovies />} />
+        <Route path="/movies/:id/edit" element={<EditPage type="movies" />} />
 
         <Route path="/about" element={<About />} />
 
