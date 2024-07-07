@@ -1,7 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { MantineProvider } from '@mantine/core'
-import App from './App.jsx'
+import AppShellComp from './AppShellComp.jsx'
+import { BrowserRouter } from "react-router-dom"
 
 // Import styles of packages that you've installed.
 // All packages except `@mantine/hooks` require styles imports
@@ -11,8 +12,10 @@ import theme from './styles/theme.js'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <BrowserRouter>
     <MantineProvider theme={theme}>
-      <App />
+      <AppShellComp />
     </MantineProvider>
+    </BrowserRouter>
   </React.StrictMode>
 )
