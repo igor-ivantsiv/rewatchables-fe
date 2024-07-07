@@ -15,6 +15,9 @@ const Navbar = () => {
             <Link className="links" to="/series">
               <p className="menuItem">Series</p>
             </Link>
+            <Link className="links" to="/add">
+              <p className="menuItem">Add Rewatchable</p>
+            </Link>
             <Link className="links" to="/About">
               <p className="menuItem">About Us</p>
             </Link>

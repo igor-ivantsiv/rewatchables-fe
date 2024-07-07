@@ -7,6 +7,7 @@ import { BrowserRouter } from "react-router-dom"
 // Import styles of packages that you've installed.
 // All packages except `@mantine/hooks` require styles imports
 import '@mantine/core/styles.css'
+import '@mantine/dates/styles.css'
 import './styles/global.css'
 import theme from './styles/theme.js'
 

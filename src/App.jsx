@@ -11,6 +11,8 @@ import EditSeries from "./pages/EditSeries";
 import EditMovies from "./pages/EditMovies";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
+import AddMoviePage from "./pages/AddMoviePage";
+import AddSeriesPage from "./pages/AddSeriesPage";
 
 function App() {
   return (
@@ -19,6 +21,9 @@ function App() {
         <Route path="/" element={<HomePage />} />
 
         <Route path="/add" element={<AddRewatchable />} />
+        <Route path="/add/movie" element={<AddMoviePage />} />
+        <Route path="/add/series" element={<AddSeriesPage />} />
+        
         <Route path="/suggestions" element={<Suggestions />} />
 
         <Route path="/series" element={<Series />} />
