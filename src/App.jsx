@@ -6,7 +6,7 @@ import Suggestions from "./pages/Suggestions";
 import Series from "./pages/Series";
 import Movies from "./pages/Movies";
 import SeriesDetails from "./pages/SeriesDetails";
-import MoviesDetails from "./pages/MoviesDetails";
+import MoviesDetails from "./components/RewatchableDetails";
 
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
@@ -27,12 +27,10 @@ function App() {
         <Route path="/suggestions" element={<Suggestions />} />
 
         <Route path="/series" element={<Series />} />
-        <Route path="/series/:seriesId" element={<SeriesDetails />} />
-        <Route path="/series/:id/edit" element={<EditPage type="series" />} />
+        <Route path="/series/:seriesId/edit" element={<EditPage type="series" />} />
 
         <Route path="/movies" element={<Movies />} />
-        <Route path="/movies/:moviesId" element={<MoviesDetails />} />
-        <Route path="/movies/:id/edit" element={<EditPage type="movies" />} />
+        <Route path="/movies/:moviesId/edit" element={<EditPage type="movies" />} />
 
         <Route path="/about" element={<About />} />
 
