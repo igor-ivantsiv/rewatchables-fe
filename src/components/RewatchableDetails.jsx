@@ -1,7 +1,7 @@
 import { API_URL } from "../helpers/constants";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { AspectRatio, Group, Image, Pill, Rating } from "@mantine/core";
+import { AspectRatio, Button, Group, Image, Pill, Rating } from "@mantine/core";
 import Netflix from "../assets/NetflixLogo.png";
 import PrimeVideo from "../assets/PrimeVideoLogo.png";
 import AppleTV from "../assets/AppleTVLogo.png";
@@ -11,9 +11,12 @@ import ParamountPlus from "../assets/ParamountPlusLogo.png";
 import Roku from "../assets/RokuLogo.png";
 import DisneyPlus from "../assets/DisneyPlusLogo.png";
 import Peacock from "../assets/PeacockLogo.png";
+import Notes from "./Notes";
+import FormModal from "./FormModal";
 
 const RewatchableDetails = ({ rewatchableId, type }) => {
   const [rewatchableDetails, setRewatchableDetails] = useState({});
+  const [showContent, setShowContent] = useState(true);
 
   const fetchRewatchable = async () => {
     try {
@@ -29,7 +32,8 @@ const RewatchableDetails = ({ rewatchableId, type }) => {
   }, []);
 
   return (
-    <>
+    <> {showContent? (
+      <div>
       <div className="details">
         <AspectRatio ratio={1080 / 720} maw={533} mx="auto">
           <Image src={rewatchableDetails.image} height={800} alt="Cover" />
@@ -53,19 +57,19 @@ const RewatchableDetails = ({ rewatchableId, type }) => {
             })}
           <p>{rewatchableDetails.description}</p>
           <p>Release year: {rewatchableDetails.year}</p>
-          {type === "movie" ? (
-    <p>Length: {rewatchableDetails.length}</p>
-) : (
-    <>
-        {rewatchableDetails.length && (
+          {type === "movies" ? (
+            <p>Length: {rewatchableDetails.length}</p>
+          ) : (
             <>
-                <p>Seasons: {rewatchableDetails.seasons}</p>
-                <p>Episodes: {rewatchableDetails.episodes}</p>
+              {rewatchableDetails.length && (
+                <>
+                  <p>Seasons: {rewatchableDetails.seasons}</p>
+                  <p>Episodes: {rewatchableDetails.episodes}</p>
+                </>
+              )}
             </>
-        )}
-    </>
-)}
-          <p>Trailer: {rewatchableDetails.length}</p>
+          )}
+          <p>Trailer: {rewatchableDetails.trailer}</p>
           <p>Available on: </p>
           {rewatchableDetails.availableOn &&
             rewatchableDetails.availableOn.map((eachProvider) => (
@@ -103,9 +107,18 @@ const RewatchableDetails = ({ rewatchableId, type }) => {
                 ) : null}
               </>
             ))}
-          <p>Trailer: {rewatchableDetails.trailer}</p>
+          <p>Trailer: </p>
+          <Notes type={type} rewatchableId={rewatchableId} fetchRewatchable={fetchRewatchable}/>
         </div>
       </div>
+        <Button onClick={() => setShowContent(false)}>Edit</Button>
+      </div>
+    ) : (<>
+      <FormModal action ="PUT" id={rewatchableId} type={type} />
+      <Button onClick={() => setShowContent(true)}>Back</Button>
+      </>
+    )}
+    
     </>
   );
 };
