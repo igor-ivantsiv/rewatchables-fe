@@ -12,3 +12,9 @@
 .providerLogo {
   height: 50px;
 }
+
+.add-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+}
