@@ -1,4 +1,5 @@
 import Form from "../components/Form";
+import FormModal from "../components/FormModal";
 
 const AddMoviePage = () => {
 
@@ -19,7 +20,7 @@ const AddMoviePage = () => {
     return (
         <>
             <h1>Add Movie</h1>
-            <Form action="POST" type="movies" initialState={initialState} />
+            <FormModal action="POST" type="movies" initialState={initialState} />
         </>
     );
 }
