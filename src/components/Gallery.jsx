@@ -1,5 +1,9 @@
 const Gallery = ({ type }) => {
-  return <></>;
+  return (
+    <>
+      
+    </>
+  );
 };
 
 export default Gallery;

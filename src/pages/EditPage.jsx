@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchData } from "../helpers/globalFunction";
 import Form from "../components/Form";
+import FormModal from "../components/FormModal";
 
 // general page to edit both series and movies, specify type in props
 const EditPage = ({ type }) => {
@@ -62,7 +63,7 @@ const EditPage = ({ type }) => {
   return (
     <>
       <h1>Edit Rewatchable</h1>
-      <Form action="PUT" type={type} initialState={initialForm} id={id}/>
+      <FormModal action="PUT" type={type} initialState={initialForm} id={id}/>
     </>
   );
 };
