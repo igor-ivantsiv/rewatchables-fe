@@ -11,7 +11,7 @@ const EditPage = ({ type }) => {
   const [rewatchable, setRewatchable] = useState({});
 
   // have some values in initial form to prevent warnings on re rendering
-  let initialState = {
+  const initialState = {
     title: "",
     genre: [],
     director: "",
@@ -27,12 +27,9 @@ const EditPage = ({ type }) => {
 
   // change length property in case of series
   if (type === "series") {
-    initialState = {
-        ...initialState,
-        length: {
-            episodes: 0,
-            seasons: 0,
-        },
+    initialState.length = {
+      episodes: 0,
+      seasons: 0,
     }
   }
 

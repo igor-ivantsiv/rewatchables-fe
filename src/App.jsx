@@ -7,8 +7,7 @@ import Series from "./pages/Series";
 import Movies from "./pages/Movies";
 import SeriesDetails from "./pages/SeriesDetails";
 import MoviesDetails from "./pages/MoviesDetails";
-import EditSeries from "./pages/EditSeries";
-import EditMovies from "./pages/EditMovies";
+
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 import AddMoviePage from "./pages/AddMoviePage";
