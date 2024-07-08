@@ -4,7 +4,11 @@ const ListItem = ({ rewatchable }) => {
   1;
   return (
     <>
-      <Link to={`/${rewatchable.type}s/${rewatchable.id}`}>
+    {/* condition to direct to the correct page (to not have to change the db) */}
+      <Link to={`/${rewatchable.type === "movie" ?
+        "movies" :
+        "series"
+      }/${rewatchable.id}`}>
         <li>
           <div>
             <img src={rewatchable.image} alt="cover" />
