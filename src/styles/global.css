@@ -2,7 +2,7 @@
 
 red for buttons: rgba(194, 58, 58, 1)
 bg brown: rgb(158, 129, 112)
-light black: rgb(50, 50, 50)
+lighter black: rgb(50, 50, 50)
 
 */
 
@@ -30,6 +30,10 @@ light black: rgb(50, 50, 50)
   width: 100%;
 }
 
+.carousel-img:hover {
+  cursor: pointer;
+}
+
 .mantine-Carousel-slide {
   /*border: 1px solid blue;*/
   max-width: 300px;
@@ -48,15 +52,23 @@ light black: rgb(50, 50, 50)
 }
 
 
+
+
+
+
+/*idea for colors*/
+
 /*
-
-idea for colors
-
 .mantine-AppShell-main {
   background-color: rgb(158, 129, 112);
+}
+
+.mantine-AppShell-header, .mantine-AppShell-navbar, .mantine-AppShell-footer {
+  background-color: rgb(218, 207, 207)
 }
 
 h1 {
   color: rgb(218, 207, 207)
 }
+
 */

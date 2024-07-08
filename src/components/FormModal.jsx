@@ -27,6 +27,7 @@ const FormModal = ({ action, id, type, closeModal }) => {
         availableOn: [],
         trailer: "",
         recap: "",
+        notes: [],
     });
 
     // fetch data if necessary
@@ -107,9 +108,9 @@ const FormModal = ({ action, id, type, closeModal }) => {
         const yearNum = formInput.year.getFullYear();
 
         // set empty values to null to keep consistency with db
-        let lengthNull = formInput.length === "" ? null : formInput.length;
-        let episodesNull = formInput.episodes === 0 ? null : formInput.episodes;
-        let seasonsNull = formInput.seasons === 0 ? null : formInput.seasons; 
+        const lengthNull = formInput.length === "" ? null : formInput.length;
+        const episodesNull = formInput.episodes === 0 ? null : formInput.episodes;
+        const seasonsNull = formInput.seasons === 0 ? null : formInput.seasons; 
 
             
         // data to be sent with request, converted year property

@@ -1,4 +1,3 @@
-
 import Gallery from "../components/Gallery";
 
 const HomePage = () => {
