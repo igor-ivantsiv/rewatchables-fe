@@ -1,6 +1,12 @@
-.form {
-  margin-bottom: 3rem;
-}
+/*
+
+red for buttons: rgba(194, 58, 58, 1)
+bg brown: rgb(158, 129, 112)
+light black: rgb(50, 50, 50)
+
+*/
+
+
 .customTitle {
   font-size: 40px;
   font-weight: bold;
@@ -18,3 +24,39 @@
   top: 0.5rem;
   right: 1rem;
 }
+
+.carousel-img {
+  height: 100%;
+  width: 100%;
+}
+
+.mantine-Carousel-slide {
+  /*border: 1px solid blue;*/
+  max-width: 300px;
+  background-color: rgb(50, 50, 50);
+}
+
+.mantine-Carousel-viewport {
+  box-shadow: -3px -3px 5px rgba(0, 0, 0, 0.2), 
+              -6px -6px 10px rgba(0, 0, 0, 0.15),
+              -9px -9px 15px rgba(0, 0, 0, 0.1),
+              3px 3px 5px rgba(0, 0, 0, 0.2),
+              6px 6px 10px rgba(0, 0, 0, 0.15),
+              9px 9px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  margin-bottom: 2rem;
+}
+
+
+/*
+
+idea for colors
+
+.mantine-AppShell-main {
+  background-color: rgb(158, 129, 112);
+}
+
+h1 {
+  color: rgb(218, 207, 207)
+}
+*/

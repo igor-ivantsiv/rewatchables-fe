@@ -1,13 +1,14 @@
-import { useDisclosure } from "@mantine/hooks";
-import { Modal, Button } from "@mantine/core";
-import FormModal from "../components/FormModal";
+
+import Gallery from "../components/Gallery";
 
 const HomePage = () => {
     
     return ( 
-    <>
+    <div className="homepage">
         <h1>Home Page</h1>
-    </> 
+        <Gallery type={"movies"}/>
+        <Gallery type={"series"} />
+    </div> 
     );
 }
  
