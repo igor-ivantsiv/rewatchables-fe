@@ -1,12 +1,14 @@
 .form {
-    margin-bottom: 3rem;
+  margin-bottom: 3rem;
 }
 .customTitle {
-    font-size: 40px;
-    font-weight: bold;
-    color: black;
-  }
-  .details {
-    display: flex;
-    
-  }
+  font-size: 40px;
+  font-weight: bold;
+  color: black;
+}
+.details {
+  display: flex;
+}
+.providerLogo {
+  height: 50px;
+}
