@@ -8,7 +8,7 @@ import { fetchData } from "../helpers/globalFunction";
 
 const FormModal = ({ action, id, type }) => {
 
-    // fetch item by id
+    // state to store fetched item in case of edit
     const [rewatchable, setRewatchable] = useState({});
 
     // set initial state
@@ -32,41 +32,41 @@ const FormModal = ({ action, id, type }) => {
 
         // if form is rendered with id prop, fetch data
         const fetchRewatchable = async() => {
-            await fetchData(`/${type}/${id}`, setRewatchable);
+            try {
 
-            console.log("rewatchable: ", rewatchable);
-
-            if (rewatchable.type) {
-                const lengthObj = rewatchable.length;
-
-                setFormInput(() => ({
-                    ...rewatchable,
-                    length: lengthObj,
-                    year: new Date(rewatchable.year, 1),
-                }));
+                // wait until data is fetched
+                await fetchData(`/${type}/${id}`, setRewatchable);
+    
+                // if item has a type, meaning a valid item was found
+                // set form input
+                if (rewatchable.type) {
+                    // in case of series, length is an object which needs to be copied seperate
+                    const lengthObj = rewatchable.length;
+                    
+                    // set form with correct length and Date (year) input
+                    setFormInput(() => ({
+                        ...rewatchable,
+                        length: lengthObj,
+                        year: new Date(rewatchable.year, 1),
+                    }));
+                }
+            }
+            catch(error) {
+                console.log("Error fetching form data: ", error);
             }
         }
 
         // fetch data and set in form if id is provided
         if (id) {
-            console.log("id: ", id)
             fetchRewatchable();
         }
+        // run effect whenever the type of rewatchable changes
+        // to ensure form is populated with correct data in case of edit
     }, [rewatchable.type]);
 
     
-
     const navigate = useNavigate();
-
-    /*
-    // ensure latest 'initialState' is used for input fields
-    useEffect(() => {
-        if (initialState) {
-            setFormInput(initialState)
-        } 
-    }, []);*/
-
-    
+   
     // handle any type of input, 
     // use callback with name included for special input types
     const handleInput = (event, name) => {
@@ -78,8 +78,6 @@ const FormModal = ({ action, id, type }) => {
             event = event.target.value
         }
 
-        console.log(`name: ${name} value: ${event}`)
-
         // update state of form 
         setFormInput((prevState) => ({
             ...prevState,
@@ -90,8 +88,6 @@ const FormModal = ({ action, id, type }) => {
 
     // handle nested properties (episodes / seasons)
     const handleNestedInput = (event, name) => {
-
-        console.log(`name: ${name} value: ${event}`)
 
         setFormInput((prevState) => ({
             ...prevState,
@@ -140,8 +136,6 @@ const FormModal = ({ action, id, type }) => {
             if (!response.ok) {
                 throw new Error(`HTTP error: ${response}`);
             }
-
-            //console.log("Succes response: ", await response.json());
 
             const newData = await response.json()
 
@@ -240,7 +234,7 @@ const FormModal = ({ action, id, type }) => {
                     onChange={(event) => handleInput(event, "year")}
                 />
                 
-                {
+                {   /* render correct input fields for either type of item */
                     formInput.type === "movie" ?
                     
                     <TimeInput 
@@ -333,7 +327,7 @@ const FormModal = ({ action, id, type }) => {
                     size="md" 
                     radius="lg"
                 >
-                    Add Rewatchable
+                    Save Rewatchable
                 </Button>
             </Center>
         </form>
