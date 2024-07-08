@@ -28,11 +28,11 @@ function App() {
 
         <Route path="/series" element={<Series />} />
         <Route path="/series/:seriesId" element={<SeriesDetails />} />
-        <Route path="/series/:id/edit" element={<EditPage type="series" />} />
+        <Route path="/series/:seriesId/edit" element={<EditPage type="series" />} />
 
         <Route path="/movies" element={<Movies />} />
         <Route path="/movies/:moviesId" element={<MoviesDetails />} />
-        <Route path="/movies/:id/edit" element={<EditPage type="movies" />} />
+        <Route path="/movies/:moviesId/edit" element={<EditPage type="movies" />} />
 
         <Route path="/about" element={<About />} />
 
