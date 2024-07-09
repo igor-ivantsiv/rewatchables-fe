@@ -13,6 +13,7 @@ import NotFound from "./pages/NotFound";
 import AddMoviePage from "./pages/AddMoviePage";
 import AddSeriesPage from "./pages/AddSeriesPage";
 import EditPage from "./pages/EditPage";
+import SearchPage from "./pages/SearchPage";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/add/series" element={<AddSeriesPage />} />
         
         <Route path="/suggestions" element={<Suggestions />} />
+        <Route path="/search" element={<SearchPage />} />
 
         <Route path="/series" element={<Series />} />
         <Route path="/series/:seriesId/edit" element={<EditPage type="series" />} />
