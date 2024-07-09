@@ -18,8 +18,11 @@ import { useEffect, useState } from "react";
 import { API_URL } from "../helpers/constants";
 import { useNavigate } from "react-router-dom";
 import { fetchData } from "../helpers/globalFunction";
+import { useRefetchContext } from "../contexts/RefetchContext";
 
 const FormModal = ({ action, id, type, closeModal, setShowContent }) => {
+    const { setShouldRefetch } = useRefetchContext();
+
   // state to store fetched item in case of edit
   const [rewatchable, setRewatchable] = useState({});
 
@@ -154,6 +157,7 @@ const FormModal = ({ action, id, type, closeModal, setShowContent }) => {
         closeModal();
         navigate(`/${newData.type}`);
       }
+      setShouldRefetch((prevState) => !prevState);
     } catch (error) {
       console.log("An error occured: ", error);
     }
