@@ -78,6 +78,10 @@ lighter black: rgb(50, 50, 50)
   margin: 2rem;
 }
 
+.error-text {
+  margin-top: 0.5rem;
+}
+
 @media screen and (max-width: 800px) {
   .suggestion-card {
     width: 100%;

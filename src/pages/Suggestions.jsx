@@ -12,37 +12,42 @@ import {
 } from "@mantine/core";
 import { useEffect, useState } from "react";
 import { fetchData } from "../helpers/globalFunction";
-import { useDisclosure } from "@mantine/hooks";
 
 const Suggestions = () => {
-  // lock the button for a second
-  // have loading image thing
-  // condition if nothing found
-  // initial state not showing anything
 
+  // current type and genre that will be suggested
   const [suggestion, setSuggestion] = useState({
     type: "movies",
     genre: "action",
   });
 
+  // list of all fetched items
   const [rewatchables, setRewatchables] = useState([]);
 
+  // keep track of if an item is currently being searched
   const [searching, setSearching] = useState(false);
 
-  //const [loading, {toggle}] = useDisclosure();
-
+  // loading state for buttons to ensure not to many requests are made
   const [loading, setLoading] = useState(false);
 
+  // render result conditionally if a result was found or not
   const [resultFound, setResultFound] = useState(false);
 
+  // currently picked suggestion to display
   const [currentRewatchable, setCurrentRewatchable] = useState({});
 
+  // render message in case there is only one option for a specific genre
+  const [noOptions, setNoOptions] = useState(false)
+
+  // nullify id of currently selected item when suggestion changes
   useEffect(() => {
-    console.log("suggestion changed")
     setCurrentRewatchable((prevState) => ({
       ...prevState,
       id: null,
-    }))
+    }));
+
+    setNoOptions(false);
+
   }, [suggestion])
 
 
@@ -58,9 +63,8 @@ const Suggestions = () => {
           : (options = rewatchables.filter((item) =>
               item.genre.includes(suggestion.genre)
             ));
-  
-        console.log("options: ", options.length)
-        // ensure a different option is chosen
+        
+        // only execute if options available
         if (options.length > 0) {
           // if id is provided, and other options available ->
           // select different item
@@ -68,7 +72,6 @@ const Suggestions = () => {
             let randInt;
             do {
               randInt = Math.floor(Math.random() * options.length);
-              console.log("chosen item: ", options[randInt]);
             }
             while (options[randInt].id === previousId);
   
@@ -76,9 +79,11 @@ const Suggestions = () => {
               options[randInt]
             );
           }
+          // only one option available -> display warning
           else if (previousId && options.length === 1) {
-            console.log("only 1 option")
+            setNoOptions(true);
           }
+          // if no previous id provided, select random option
           else {
             setCurrentRewatchable(
               options[Math.floor(Math.random() * options.length)]
@@ -86,42 +91,40 @@ const Suggestions = () => {
           }
           setResultFound(true);
         }
+        // if no options -> display warning
         else {
           setResultFound(false);
         }
       }
     }
 
+    // call function with id of previously selected item
     selectSuggestion(currentRewatchable.id)
 
   }, [rewatchables]);
 
 
+  // toggle loading state for buttons when new item is displayed
   useEffect(() => {
+
     const runLoadingState = () => {
-      console.log("toggle on")
       setLoading(true);
       const debounceId = setTimeout(() => {
         setLoading(false);
-        console.log("toggle off")
       }, 1000);
 
       return () => clearTimeout(debounceId);
     }
 
     runLoadingState();
+
   }, [currentRewatchable])
 
-
-  const updateSearch = () => {
-    setSearching((prevState) => (!prevState));
-  }
 
   // scroll to bottom when the card is displayed
   const scrollToBottom = () => {
 
     const scrollTimeOut = setTimeout(() => {
-      console.log("scroll");
       window.scrollTo({
         top: document.body.scrollHeight,
         behavior: "smooth",
@@ -136,9 +139,9 @@ const Suggestions = () => {
     }));
   };
 
-  const handleSubmit = (event, previousId) => {
+  // fetch list of specified type
+  const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("click");
     setSearching(true)
 
     if (suggestion.type === "either") {
@@ -250,6 +253,10 @@ const Suggestions = () => {
               >
                 Suggest another
               </Button>
+              {noOptions && 
+                <Text size="sm" c="red" className="error-text">
+                  *No other options available for this genre
+                </Text>}
             </Card>
           : <p>No results</p>
           }
