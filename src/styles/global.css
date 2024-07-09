@@ -113,6 +113,15 @@ a{
   margin: 2rem;
 }
 
+.error-text {
+  margin-top: 0.5rem;
+}
+
+.search-term {
+  font-weight: bold;
+  font-style: italic;
+}
+
 @media screen and (max-width: 800px) {
   .suggestion-card {
     width: 100%;
