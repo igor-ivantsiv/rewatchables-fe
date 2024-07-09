@@ -30,7 +30,7 @@ const ListItem = ({ rewatchable }) => {
           title: "customTitle",
         }}
       >
-        <RewatchableDetails rewatchableId={rewatchable.id} type={rewatchable.type} />
+        <RewatchableDetails rewatchableId={rewatchable.id} type={rewatchable.type} close={close}/>
       </Modal>
       </>
   );

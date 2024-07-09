@@ -4,8 +4,12 @@ import ListItem from "../components/ListItem";
 import axios from "axios";
 import { API_URL } from "../helpers/constants";
 import { SimpleGrid } from "@mantine/core";
+import { useRefetchContext } from "../contexts/RefetchContext"
 
 const List = ({ type }) => {
+  const { shouldRefetch } = useRefetchContext();
+
+
   const [rewatchables, setRewatchables] = useState([]);
   const getRewatchables = async () => {
     try {
@@ -19,6 +23,11 @@ const List = ({ type }) => {
   useEffect(() => {
     getRewatchables();
   }, []);
+
+  useEffect(() => {
+    getRewatchables();
+  }, [shouldRefetch]);
+
 
   return (
     <SimpleGrid

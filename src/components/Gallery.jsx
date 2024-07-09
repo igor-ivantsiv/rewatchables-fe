@@ -4,8 +4,11 @@ import { fetchData } from "../helpers/globalFunction";
 import { AspectRatio, Modal } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import RewatchableDetails from "./RewatchableDetails";
+import { useRefetchContext } from "../contexts/RefetchContext";
 
 const Gallery = ({ type }) => {
+  const { shouldRefetch } = useRefetchContext();
+
 
   // states for all items, specific item
   const [rewatchables, setRewatchables] = useState([{}])
@@ -32,6 +35,11 @@ const Gallery = ({ type }) => {
     // open modal
     open()
   }
+
+  useEffect(() => {
+    fetchData(`/${type}`, setRewatchables);
+  }, [shouldRefetch]);
+
 
   return (
     <>
@@ -68,7 +76,7 @@ const Gallery = ({ type }) => {
           title: "customTitle",
         }}
       >
-        <RewatchableDetails rewatchableId={currentItem.id} type={currentItem.type} />
+        <RewatchableDetails rewatchableId={currentItem.id} type={currentItem.type} close={close}/>
       </Modal>
     </>
   );
