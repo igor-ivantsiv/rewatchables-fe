@@ -2,6 +2,7 @@ import {
   IconDeviceTv,
   IconHome,
   IconMovie,
+  IconQuestionMark,
   IconUserHeart,
 } from "@tabler/icons-react";
 import { Link } from "react-router-dom";
@@ -29,6 +30,11 @@ const Navbar = ({ navbarSmall }) => {
                   <IconDeviceTv className="navbarIcon" />
                 </p>
               </Link>
+              <Link className="links" to="/suggestions">
+                <p className="navbarP">
+                  <IconQuestionMark className="navbarIcon" />
+                </p>
+              </Link>
               <Link className="links" to="/About">
                 <p className="navbarP">
                   <IconUserHeart className="navbarIcon" />
@@ -45,6 +51,9 @@ const Navbar = ({ navbarSmall }) => {
               </Link>
               <Link className="links" to="/series">
                 <p className="menuItem">Series</p>
+              </Link>
+              <Link className="links" to="/suggestions">
+                <p className="menuItem">Suggestion</p>
               </Link>
               <Link className="links" to="/About">
                 <p className="menuItem">About Us</p>
