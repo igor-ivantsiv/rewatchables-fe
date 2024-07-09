@@ -4,8 +4,9 @@ const HomePage = () => {
     
     return ( 
     <div className="homepage">
-        <h1>Home Page</h1>
+        <h1>Movies</h1>
         <Gallery type={"movies"}/>
+        <h1>Series</h1>
         <Gallery type={"series"} />
     </div> 
     );

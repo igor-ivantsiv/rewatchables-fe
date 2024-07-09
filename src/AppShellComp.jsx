@@ -15,7 +15,7 @@ function AppShellComp() {
 
   const [navbarSmall, setNavbarSmall] = useState(false);
 
-  const navbarWidth = navbarSmall ? 64 : 240;
+  const navbarWidth = navbarSmall ? 62 : 240;
 
   return (
     <AppShell

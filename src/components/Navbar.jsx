@@ -5,9 +5,10 @@ import {
   IconQuestionMark,
   IconUserHeart,
 } from "@tabler/icons-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = ({ navbarSmall }) => {
+  const location = useLocation();
   return (
     <>
       <section className="navbar">
@@ -15,48 +16,48 @@ const Navbar = ({ navbarSmall }) => {
         <div className="menu">
           {navbarSmall ? (
             <>
-              <Link className="links" to="/">
+              <Link className={location.pathname === "/" ? "active" : ""} to="/" >
                 <div className="navbarIconDiv">
-                  <IconHome size={32} className="navbarIcon" />
+                  <IconHome size={30} className="navbarIcon" />
                 </div>
               </Link>
-              <Link className="links" to="/movies">
+              <Link className={location.pathname === "/movies" ? "active" : ""} to="/movies">
                 <div className="navbarIconDiv">
-                  <IconMovie size={32} className="navbarIcon" />
+                  <IconMovie size={30} className="navbarIcon" />
                 </div>
               </Link>
-              <Link className="links" to="/series">
+              <Link className={location.pathname === "/series" ? "active" : ""} to="/series">
                 <div className="navbarIconDiv">
-                  <IconDeviceTv size={32} className="navbarIcon" />
+                  <IconDeviceTv size={30} className="navbarIcon" />
                 </div>
               </Link>
-              <Link className="links" to="/suggestions">
+              <Link className={location.pathname === "/suggestions" ? "active" : ""} to="/suggestions">
                 <div className="navbarIconDiv">
-                  <IconQuestionMark size={32} className="navbarIcon" />
+                  <IconQuestionMark size={30} className="navbarIcon" />
                 </div>
               </Link>
-              <Link className="links" to="/About">
+              <Link className={location.pathname === "/about" ? "active" : ""} to="/about">
                 <div className="navbarIconDiv">
-                  <IconUserHeart size={32} className="navbarIcon" />
+                  <IconUserHeart size={30} className="navbarIcon" />
                 </div>
               </Link>
             </>
           ) : (
             <>
-              <Link className="links" to="/">
-                <div className="menuItem"><IconHome size={32} className="navbarIcon" /><p className="menuText">Home</p></div>
+              <Link className={location.pathname === "/" ? "active" : ""} to="/" >
+              <div className="menuItem"><IconHome size={30} className="navbarIcon" /><p className="menuText">Home</p></div>
               </Link>
-              <Link className="links" to="/movies">
-                <div className="menuItem"><IconMovie size={32} className="navbarIcon" /><p className="menuText">Movies</p></div>
+              <Link className={location.pathname === "/movies" ? "active" : ""} to="/movies">
+                <div className="menuItem"><IconMovie size={30} className="navbarIcon" /><p className="menuText">Movies</p></div>
               </Link>
-              <Link className="links" to="/series">
-                <div className="menuItem"><IconDeviceTv size={32} className="navbarIcon" /><p className="menuText">Series</p></div>
+              <Link className={location.pathname === "/series" ? "active" : ""} to="/series">
+                <div className="menuItem"><IconDeviceTv size={30} className="navbarIcon" /><p className="menuText">Series</p></div>
               </Link>
-              <Link className="links" to="/suggestions">
-                <div className="menuItem"><IconQuestionMark  size={32} className="navbarIcon" /><p className="menuText">Suggestion</p></div>
+              <Link className={location.pathname === "/suggestions" ? "active" : ""} to="/suggestions">
+                <div className="menuItem"><IconQuestionMark  size={30} className="navbarIcon" /><p className="menuText">Suggestion</p></div>
               </Link>
-              <Link className="links" to="/About">
-                <div className="menuItem"><IconUserHeart size={32} className="navbarIcon" /><p className="menuText">About Us</p></div>
+              <Link className={location.pathname === "/about" ? "active" : ""} to="/about">
+                <div className="menuItem"><IconUserHeart size={30} className="navbarIcon" /><p className="menuText">About Us</p></div>
               </Link>
             </>
           )}
