@@ -15,11 +15,11 @@ function AppShellComp() {
 
   const [navbarSmall, setNavbarSmall] = useState(false);
 
-  const navbarWidth = navbarSmall ? 70 : 280;
+  const navbarWidth = navbarSmall ? 62 : 240;
 
   return (
     <AppShell
-      header={{ height: 60 }}
+      header={{ height: 72 }}
       navbar={{
         width: navbarWidth,
         breakpoint: "sm",
