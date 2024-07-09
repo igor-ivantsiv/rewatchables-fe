@@ -22,7 +22,7 @@ const Header = () => {
           <p className="pageName">Rewatchables</p>
         </Link>
       </div>
-      <div>
+      <div className="add-btn" >
         <AddButton />
       </div>
     </Flex>

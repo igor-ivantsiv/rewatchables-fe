@@ -6,25 +6,28 @@ import { API_URL } from "../helpers/constants";
 import { useNavigate } from "react-router-dom";
 import { fetchData } from "../helpers/globalFunction";
 
-const FormModal = ({ action, id, type }) => {
+const FormModal = ({ action, id, type, closeModal }) => {
 
     // state to store fetched item in case of edit
     const [rewatchable, setRewatchable] = useState({});
 
     // set initial state
     const [formInput, setFormInput] = useState({
-        type: "movie",
+        type: "movies",
         title: "",
         genre: [],
         director: "",
         rating: 0.0,
         year: new Date(2024, 1),
         length: "",
+        seasons: 0,
+        episodes: 0,
         description: "",
         image: "",
         availableOn: [],
         trailer: "",
         recap: "",
+        notes: [],
     });
 
     // fetch data if necessary
@@ -40,13 +43,10 @@ const FormModal = ({ action, id, type }) => {
                 // if item has a type, meaning a valid item was found
                 // set form input
                 if (rewatchable.type) {
-                    // in case of series, length is an object which needs to be copied seperate
-                    const lengthObj = rewatchable.length;
                     
                     // set form with correct length and Date (year) input
                     setFormInput(() => ({
                         ...rewatchable,
-                        length: lengthObj,
                         year: new Date(rewatchable.year, 1),
                     }));
                 }
@@ -63,6 +63,21 @@ const FormModal = ({ action, id, type }) => {
         // run effect whenever the type of rewatchable changes
         // to ensure form is populated with correct data in case of edit
     }, [rewatchable.type]);
+
+
+    // if type is changed at any point, set length values to 0 / empty str
+    useEffect(() => {
+        formInput.type === "movies" ?
+        setFormInput((prevState) => ({
+            ...prevState,
+            seasons: 0,
+            episodes: 0,
+        })) :
+        setFormInput((prevState) => ({
+            ...prevState,
+            length: "",
+        }));
+    }, [formInput.type])
 
     
     const navigate = useNavigate();
@@ -86,42 +101,33 @@ const FormModal = ({ action, id, type }) => {
     }
 
 
-    // handle nested properties (episodes / seasons)
-    const handleNestedInput = (event, name) => {
-
-        setFormInput((prevState) => ({
-            ...prevState,
-            length: {
-                ...prevState.length,
-                [name]: event,
-            }
-        }));
-    }
-
     const handleSubmit = async(event) => {
         event.preventDefault();
 
         // convert year Date object back to number
         const yearNum = formInput.year.getFullYear();
 
+        // set empty values to null to keep consistency with db
+        const lengthNull = formInput.length === "" ? null : formInput.length;
+        const episodesNull = formInput.episodes === 0 ? null : formInput.episodes;
+        const seasonsNull = formInput.seasons === 0 ? null : formInput.seasons; 
+
+            
         // data to be sent with request, converted year property
         const data = {
             ...formInput,
             year: yearNum,
+            length: lengthNull,
+            episodes: episodesNull,
+            seasons: seasonsNull,
         }
 
         // get correct url for either post of put request
         let url;
-        let urlEndpoint;
-
-        // add an 's' to type to get correct url (in case of movie)
-        formInput.type === "movie" ?
-        urlEndpoint = `${formInput.type}s` :
-        urlEndpoint = `${formInput.type}`;
 
         action === "POST" ?
-        url = `${API_URL}/${urlEndpoint}` :
-        url = `${API_URL}/${urlEndpoint}/${id}`;
+        url = `${API_URL}/${formInput.type}` :
+        url = `${API_URL}/${formInput.type}/${id}`;
 
         try {
 
@@ -139,7 +145,9 @@ const FormModal = ({ action, id, type }) => {
 
             const newData = await response.json()
 
-            navigate(`/${urlEndpoint}/${newData.id}`)
+            // close form, navigate to list of type added/editted
+            closeModal();
+            navigate(`/${newData.type}`);
 
         } catch (error) {
             console.log("An error occured: ", error);
@@ -178,7 +186,7 @@ const FormModal = ({ action, id, type }) => {
                     radius={"lg"}
                     label="Type"
                     name="type"
-                    data={["movie", "series"]}
+                    data={["movies", "series"]}
                     value={formInput.type}
                     onChange={handleInput}
                 />
@@ -235,7 +243,7 @@ const FormModal = ({ action, id, type }) => {
                 />
                 
                 {   /* render correct input fields for either type of item */
-                    formInput.type === "movie" ?
+                    formInput.type === "movies" ?
                     
                     <TimeInput 
                         radius="lg"
@@ -256,8 +264,8 @@ const FormModal = ({ action, id, type }) => {
                             min={1}
                             max={999}
                             name="seasons"
-                            value={formInput.length.seasons}
-                            onChange={(event) => handleNestedInput(event, "seasons")}
+                            value={formInput.seasons}
+                            onChange={(event) => handleInput(event, "seasons")}
                         />
                         <NumberInput 
                             label="Episodes"
@@ -265,8 +273,8 @@ const FormModal = ({ action, id, type }) => {
                             min={1}
                             max={9999}
                             name="episodes"
-                            value={formInput.length.episodes}
-                            onChange={(event) => handleNestedInput(event, "episodes")}
+                            value={formInput.episodes}
+                            onChange={(event) => handleInput(event, "episodes")}
                         />
                     </>
                 } 

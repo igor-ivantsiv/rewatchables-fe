@@ -15,13 +15,13 @@ const AddButton = () => {
             title="Add Rewatchable"
             size="80%"
         >
-            <FormModal action="POST" />
+            <FormModal action="POST" closeModal={close}/>
         </Modal>
         <Button 
             onClick={open}
             variant="filled" 
             color="rgba(194, 58, 58, 1)" 
-            size="md" 
+            size="compact-xl" 
             radius="lg"
         >
             +
