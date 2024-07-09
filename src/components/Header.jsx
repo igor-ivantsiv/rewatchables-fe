@@ -10,11 +10,6 @@ const Header = () => {
       align="stretch"
     >
       <div className="mainHeader">
-        <img
-          className="menuIcon"
-          src=""
-          alt="menu icon"
-        />
         <Link to="/">
           <img className="logo" src="" alt="logo" />
         </Link>

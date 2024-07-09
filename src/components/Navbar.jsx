@@ -37,16 +37,16 @@ const Navbar = ({ navbarSmall }) => {
           ) : (
             <>
               <Link className="links" to="/">
-                <p className="menuItem">Home</p>
+                <p className="menuItem"><IconHome className="navbarIcon" /> Home</p>
               </Link>
               <Link className="links" to="/movies">
-                <p className="menuItem">Movies</p>
+                <p className="menuItem"><IconMovie className="navbarIcon" /> Movies</p>
               </Link>
               <Link className="links" to="/series">
-                <p className="menuItem">Series</p>
+                <p className="menuItem"><IconDeviceTv className="navbarIcon" /> Series</p>
               </Link>
               <Link className="links" to="/About">
-                <p className="menuItem">About Us</p>
+                <p className="menuItem"><IconUserHeart className="navbarIcon" /> About Us</p>
               </Link>
             </>
           )}
