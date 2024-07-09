@@ -3,6 +3,7 @@ import {
   IconHome,
   IconMovie,
   IconQuestionMark,
+  IconSearch,
   IconUserHeart,
 } from "@tabler/icons-react";
 import { Link, useLocation } from "react-router-dom";
@@ -31,6 +32,11 @@ const Navbar = ({ navbarSmall }) => {
                   <IconDeviceTv size={30} className="navbarIcon" />
                 </div>
               </Link>
+              <Link className={location.pathname === "/search" ? "active" : ""} to="/search">
+                <div className="navbarIconDiv">
+                  <IconSearch size={30} className="navbarIcon" />
+                </div>
+              </Link>
               <Link className={location.pathname === "/suggestions" ? "active" : ""} to="/suggestions">
                 <div className="navbarIconDiv">
                   <IconQuestionMark size={30} className="navbarIcon" />
@@ -52,6 +58,9 @@ const Navbar = ({ navbarSmall }) => {
               </Link>
               <Link className={location.pathname === "/series" ? "active" : ""} to="/series">
                 <div className="menuItem"><IconDeviceTv size={30} className="navbarIcon" /><p className="menuText">Series</p></div>
+              </Link>
+              <Link className={location.pathname === "/search" ? "active" : ""} to="/search">
+                <div className="menuItem"><IconSearch  size={30} className="navbarIcon" /><p className="menuText">Search</p></div>
               </Link>
               <Link className={location.pathname === "/suggestions" ? "active" : ""} to="/suggestions">
                 <div className="menuItem"><IconQuestionMark  size={30} className="navbarIcon" /><p className="menuText">Suggestion</p></div>
