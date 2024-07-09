@@ -14,11 +14,37 @@ lighter black: rgb(50, 50, 50)
   right: -15px;
   top: 50px;
 }
-
-.navbarP{
-  text-align: center;
+.logo {
+  height: 46px;;
+}
+.mainHeader{
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 10px;
+}
+.menuItem{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: 56px;
+}
+a{
+  text-decoration: none;
+  color: black;
 }
 
+.navbarIconDiv{
+  display:flex;
+  align-items: center;
+  text-align: center;
+  height: 56px;
+}
+.menuText{
+  font-size: 22px;
+  font-weight: 400;
+}
 .customTitle {
   font-size: 40px;
   font-weight: bold;

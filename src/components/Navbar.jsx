@@ -16,47 +16,47 @@ const Navbar = ({ navbarSmall }) => {
           {navbarSmall ? (
             <>
               <Link className="links" to="/">
-                <p className="navbarP">
-                  <IconHome className="navbarIcon" />
-                </p>
+                <div className="navbarIconDiv">
+                  <IconHome size={32} className="navbarIcon" />
+                </div>
               </Link>
               <Link className="links" to="/movies">
-                <p className="navbarP">
-                  <IconMovie className="navbarIcon" />
-                </p>
+                <div className="navbarIconDiv">
+                  <IconMovie size={32} className="navbarIcon" />
+                </div>
               </Link>
               <Link className="links" to="/series">
-                <p className="navbarP">
-                  <IconDeviceTv className="navbarIcon" />
-                </p>
+                <div className="navbarIconDiv">
+                  <IconDeviceTv size={32} className="navbarIcon" />
+                </div>
               </Link>
               <Link className="links" to="/suggestions">
-                <p className="navbarP">
-                  <IconQuestionMark className="navbarIcon" />
-                </p>
+                <div className="navbarIconDiv">
+                  <IconQuestionMark size={32} className="navbarIcon" />
+                </div>
               </Link>
               <Link className="links" to="/About">
-                <p className="navbarP">
-                  <IconUserHeart className="navbarIcon" />
-                </p>
+                <div className="navbarIconDiv">
+                  <IconUserHeart size={32} className="navbarIcon" />
+                </div>
               </Link>
             </>
           ) : (
             <>
               <Link className="links" to="/">
-                <p className="menuItem"><IconHome className="navbarIcon" /> Home</p>
+                <div className="menuItem"><IconHome size={32} className="navbarIcon" /><p className="menuText">Home</p></div>
               </Link>
               <Link className="links" to="/movies">
-                <p className="menuItem"><IconMovie className="navbarIcon" /> Movies</p>
+                <div className="menuItem"><IconMovie size={32} className="navbarIcon" /><p className="menuText">Movies</p></div>
               </Link>
               <Link className="links" to="/series">
-                <p className="menuItem"><IconDeviceTv className="navbarIcon" /> Series</p>
+                <div className="menuItem"><IconDeviceTv size={32} className="navbarIcon" /><p className="menuText">Series</p></div>
               </Link>
               <Link className="links" to="/suggestions">
-                <p className="menuItem">Suggestion</p>
+                <div className="menuItem"><IconQuestionMark  size={32} className="navbarIcon" /><p className="menuText">Suggestion</p></div>
               </Link>
               <Link className="links" to="/About">
-                <p className="menuItem"><IconUserHeart className="navbarIcon" /> About Us</p>
+                <div className="menuItem"><IconUserHeart size={32} className="navbarIcon" /><p className="menuText">About Us</p></div>
               </Link>
             </>
           )}
