@@ -6,6 +6,18 @@ lighter black: rgb(50, 50, 50)
 
 */
 
+.appshellNavbar {
+  position: relative;
+}
+.collapseIcon{
+  position: absolute;
+  right: -15px;
+  top: 50px;
+}
+
+.navbarP{
+  text-align: center;
+}
 
 .customTitle {
   font-size: 40px;
