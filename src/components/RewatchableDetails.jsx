@@ -18,6 +18,12 @@ const RewatchableDetails = ({ rewatchableId, type }) => {
   const [rewatchableDetails, setRewatchableDetails] = useState({});
   const [showContent, setShowContent] = useState(true);
 
+
+
+  useEffect(() => {
+    fetchRewatchable();
+  }, [showContent]);
+
   const fetchRewatchable = async () => {
     try {
       const response = await axios.get(`${API_URL}/${type}/${rewatchableId}`);
@@ -114,7 +120,7 @@ const RewatchableDetails = ({ rewatchableId, type }) => {
         <Button onClick={() => setShowContent(false)}>Edit</Button>
       </div>
     ) : (<>
-      <FormModal action ="PUT" id={rewatchableId} type={type} />
+      <FormModal action ="PUT" id={rewatchableId} type={type} setShowContent={setShowContent} />
       <Button onClick={() => setShowContent(true)}>Back</Button>
       </>
     )}
