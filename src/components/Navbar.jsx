@@ -18,6 +18,9 @@ const Navbar = () => {
             <Link className="links" to="/add">
               <p className="menuItem">Add Rewatchable</p>
             </Link>
+            <Link className="links" to="/suggestions">
+              <p className="menuItem">Suggestions</p>
+            </Link>
             <Link className="links" to="/About">
               <p className="menuItem">About Us</p>
             </Link>
