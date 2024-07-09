@@ -63,8 +63,27 @@ lighter black: rgb(50, 50, 50)
   margin-bottom: 2rem;
 }
 
+.btn-div {
+  margin-top: 1rem;
+}
 
+.suggestion-box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 
+.suggestion-card {
+  width: 50%;
+  margin: 2rem;
+}
+
+@media screen and (max-width: 800px) {
+  .suggestion-card {
+    width: 100%;
+  }
+
+}
 
 
 

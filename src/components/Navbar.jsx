@@ -10,6 +10,7 @@ const Navbar = ({ navbarSmall }) => {
   return (
     <>
       <section className="navbar">
+
         <div className="menu">
           {navbarSmall ? (
             <>
@@ -51,6 +52,7 @@ const Navbar = ({ navbarSmall }) => {
             </>
           )}
         </div>
+
       </section>
     </>
   );
