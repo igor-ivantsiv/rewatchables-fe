@@ -186,7 +186,7 @@ const FormModal = ({ action, id, type, closeModal, setShowContent }) => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <SimpleGrid cols={2}>
+        <SimpleGrid cols={2} className="form-grid">
           <NativeSelect
             radius={"lg"}
             label="Type"
@@ -324,6 +324,7 @@ const FormModal = ({ action, id, type, closeModal, setShowContent }) => {
           <TextInput
             radius="lg"
             label="Trailer"
+            description="Add a url path to a trailer"
             name="trailer"
             value={formInput.trailer}
             onChange={handleInput}
