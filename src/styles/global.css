@@ -55,16 +55,7 @@ lighter black: rgb(50, 50, 50)
   height: 50px;
 }
 
-.add-btn {
-  position: absolute;
-  top: 0.5rem;
-  right: 1rem;
-}
 
-.carousel-img {
-  height: 100%;
-  width: 100%;
-}
 
 .carousel-img:hover {
   cursor: pointer;
@@ -85,9 +76,6 @@ lighter black: rgb(50, 50, 50)
   margin-bottom: 2rem;
 }
 
-.btn-div {
-  margin-top: 1rem;
-}
 
 .cardContent{
   display: flex;
@@ -111,7 +99,18 @@ lighter black: rgb(50, 50, 50)
 .suggestion-card {
   width: 50%;
   margin: 2rem;
+  padding: 1rem;
+  border-radius: 15px;
 }
+
+.suggestion-img {
+  border-radius: 15px;
+}
+
+.suggest-btn-div {
+  margin-top: 1rem;
+}
+
 
 .error-text {
   margin-top: 0.5rem;
@@ -131,21 +130,8 @@ lighter black: rgb(50, 50, 50)
 @media screen and (max-width: 800px) {
   .suggestion-card {
     width: 100%;
+    margin: 1rem;
   }
 }
 
 /*idea for colors*/
-
-/*
-.mantine-AppShell-main {
-  background-color: rgb(158, 129, 112);
-}
-
-.mantine-AppShell-header, .mantine-AppShell-navbar, .mantine-AppShell-footer {
-  background-color: rgb(218, 207, 207)
-}
-
-h1 {
-  color: rgb(218, 207, 207)
-}
-*/

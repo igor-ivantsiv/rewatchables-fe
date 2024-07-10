@@ -58,7 +58,8 @@ const Gallery = ({ type }) => {
                 <Image
                   src={item.image}
                   alt={item.title}
-                  onClick={() => getDetails(item.id, item.type, item.title)} 
+                  onClick={() => getDetails(item.id, item.type, item.title)}
+                  className="carousel-img" 
                 />
                 </AspectRatio>
               </Carousel.Slide>
