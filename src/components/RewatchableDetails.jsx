@@ -1,6 +1,14 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { AspectRatio, Button, Group, Image, Pill, Rating } from "@mantine/core";
+import {
+  AspectRatio,
+  Button,
+  Group,
+  Image,
+  Pill,
+  Rating,
+  ScrollArea,
+} from "@mantine/core";
 import Netflix from "../assets/NetflixLogo.png";
 import PrimeVideo from "../assets/PrimeVideoLogo.png";
 import AppleTV from "../assets/AppleTVLogo.png";
@@ -13,6 +21,7 @@ import Peacock from "../assets/PeacockLogo.png";
 import Notes from "./Notes";
 import FormModal from "./FormModal";
 import { useRefetchContext } from "../contexts/RefetchContext";
+import { IconArrowBack, IconEdit, IconTrash } from "@tabler/icons-react";
 
 const RewatchableDetails = ({ rewatchableId, type, close }) => {
   const { setShouldRefetch } = useRefetchContext();
@@ -26,7 +35,9 @@ const RewatchableDetails = ({ rewatchableId, type, close }) => {
 
   const fetchRewatchable = async () => {
     try {
-      const response = await axios.get(`${import.meta.env.VITE_API_URL}/${type}/${rewatchableId}`);
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_URL}/${type}/${rewatchableId}`
+      );
       setRewatchableDetails(response.data);
     } catch (error) {
       console.log(error);
@@ -52,108 +63,127 @@ const RewatchableDetails = ({ rewatchableId, type, close }) => {
 
   return (
     <>
-      {" "}
       {showContent ? (
         <div>
           <div className="details">
-            <AspectRatio ratio={1080 / 720} maw={533} mx="auto">
-              <Image src={rewatchableDetails.image} height={800} alt="Cover" />
+            <AspectRatio ratio={1080 / 720} maw={373} mx="auto">
+              <Image
+                className="detailsImage"
+                src={rewatchableDetails.image}
+                height={560}
+                alt="Cover"
+              />
             </AspectRatio>
             <div className="detailsContent">
-              <h1>{rewatchableDetails.title}</h1>
+              <div className="arrayDiv">
+                {rewatchableDetails.genre &&
+                  rewatchableDetails.genre.map((eachGenre) => {
+                    return (
+                      <Pill className="pill" size="xl">
+                        {eachGenre}
+                      </Pill>
+                    );
+                  })}
+              </div>
+              <div className="flexDivDetails">
               <p>Director: {rewatchableDetails.director}</p>
-              <Group>
-                <Rating
-                  fractions={4}
-                  name="rating"
-                  value={rewatchableDetails.rating}
-                  size="xl"
-                  readOnly
-                />
-                <p>{rewatchableDetails.rating} out of 5</p>
-              </Group>
-              {rewatchableDetails.genre &&
-                rewatchableDetails.genre.map((eachGenre) => {
-                  return <Pill size="xl">{eachGenre}</Pill>;
-                })}
-              <p>{rewatchableDetails.description}</p>
               <p>Release year: {rewatchableDetails.year}</p>
               {type === "movies" ? (
                 <p>Length: {rewatchableDetails.length}</p>
-              ) : (
+              ) : null}
+              </div>
+              {type === "series" ? (
                 <>
-                  {rewatchableDetails.length && (
-                    <>
-                      <p>Seasons: {rewatchableDetails.seasons}</p>
-                      <p>Episodes: {rewatchableDetails.episodes}</p>
-                    </>
-                  )}
-                </>
-              )}
+                {rewatchableDetails.seasons && (
+                  <div className="flexDivDetails">
+                    <p>Seasons: {rewatchableDetails.seasons}</p>
+                    <p>Episodes: {rewatchableDetails.episodes}</p>
+                  </div>
+                )}
+              </>
+              ) : null}
+              <p>{rewatchableDetails.description}</p>
+              
               <p>Trailer: {rewatchableDetails.trailer}</p>
-              <p>Available on: </p>
-              {rewatchableDetails.availableOn &&
-                rewatchableDetails.availableOn.map((eachProvider) => (
-                  <>
-                    {eachProvider === "Netflix" ? (
-                      <img
-                        className="providerLogo"
-                        src={Netflix}
-                        alt="Netflix"
-                      />
-                    ) : eachProvider === "Prime Video" ? (
-                      <img
-                        className="providerLogo"
-                        src={PrimeVideo}
-                        alt="Prime Video"
-                      />
-                    ) : eachProvider === "Apple TV" ? (
-                      <img
-                        className="providerLogo"
-                        src={AppleTV}
-                        alt="Apple TV"
-                      />
-                    ) : eachProvider === "HBO Max" ? (
-                      <img
-                        className="providerLogo"
-                        src={HboMax}
-                        alt="HBO Max"
-                      />
-                    ) : eachProvider === "Hulu" ? (
-                      <img className="providerLogo" src={Hulu} alt="Hulu" />
-                    ) : eachProvider === "Paramount+" ? (
-                      <img
-                        className="providerLogo"
-                        src={ParamountPlus}
-                        alt="Paramount Plus"
-                      />
-                    ) : eachProvider === "Roku" ? (
-                      <img className="providerLogo" src={Roku} alt="Roku" />
-                    ) : eachProvider === "Disney+" ? (
-                      <img
-                        className="providerLogo"
-                        src={DisneyPlus}
-                        alt="Disney Plus"
-                      />
-                    ) : eachProvider === "Peacock" ? (
-                      <img
-                        className="providerLogo"
-                        src={Peacock}
-                        alt="Peacock"
-                      />
-                    ) : null}
-                  </>
-                ))}
-              <p>Trailer: </p>
+              <div className="arrayDiv">
+                {rewatchableDetails.availableOn &&
+                  rewatchableDetails.availableOn.map((eachProvider) => (
+                    <>
+                      {eachProvider === "Netflix" ? (
+                        <img
+                          className="providerLogo"
+                          src={Netflix}
+                          alt="Netflix"
+                        />
+                      ) : eachProvider === "Prime Video" ? (
+                        <img
+                          className="providerLogo"
+                          src={PrimeVideo}
+                          alt="Prime Video"
+                        />
+                      ) : eachProvider === "Apple TV" ? (
+                        <img
+                          className="providerLogo"
+                          src={AppleTV}
+                          alt="Apple TV"
+                        />
+                      ) : eachProvider === "HBO Max" ? (
+                        <img
+                          className="providerLogo"
+                          src={HboMax}
+                          alt="HBO Max"
+                        />
+                      ) : eachProvider === "Hulu" ? (
+                        <img className="providerLogo" src={Hulu} alt="Hulu" />
+                      ) : eachProvider === "Paramount+" ? (
+                        <img
+                          className="providerLogo"
+                          src={ParamountPlus}
+                          alt="Paramount Plus"
+                        />
+                      ) : eachProvider === "Roku" ? (
+                        <img className="providerLogo" src={Roku} alt="Roku" />
+                      ) : eachProvider === "Disney+" ? (
+                        <img
+                          className="providerLogo"
+                          src={DisneyPlus}
+                          alt="Disney Plus"
+                        />
+                      ) : eachProvider === "Peacock" ? (
+                        <img
+                          className="providerLogo"
+                          src={Peacock}
+                          alt="Peacock"
+                        />
+                      ) : null}
+                    </>
+                  ))}
+              </div>
               <Notes
                 type={type}
                 rewatchableId={rewatchableId}
                 fetchRewatchable={fetchRewatchable}
               />
+                        <Button
+            color="#f1580c"
+            size="compact-lg"
+            radius="lg"
+            rightSection={<IconEdit size={20} />}
+            onClick={() => setShowContent(false)}
+          >
+            Edit
+          </Button>
+          <Button
+            color="red"
+            size="compact-lg"
+            radius="lg"
+            rightSection={<IconTrash size={20} />}
+            onClick={() => handleDelete()}
+          >
+            Delete
+          </Button>
             </div>
           </div>
-          <Button onClick={() => setShowContent(false)}>Edit</Button>
-          <Button onClick={() => handleDelete()}>Delete</Button>
         </div>
       ) : (
         <>
@@ -163,7 +193,15 @@ const RewatchableDetails = ({ rewatchableId, type, close }) => {
             type={type}
             setShowContent={setShowContent}
           />
-          <Button onClick={() => setShowContent(true)}>Back</Button>
+          <Button
+            color="#f1580c"
+            size="compact-xl"
+            radius="lg"
+            rightSection={<IconArrowBack size={20} />}
+            onClick={() => setShowContent(true)}
+          >
+            Back
+          </Button>
         </>
       )}
     </>

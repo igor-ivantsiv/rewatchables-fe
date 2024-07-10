@@ -1,7 +1,7 @@
 import { Button, Textarea } from "@mantine/core";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { IconTrash } from "@tabler/icons-react";
+import { IconMessageForward, IconTrash } from "@tabler/icons-react";
 
 const Notes = ({ rewatchableId, type }) => {
   const [newNote, setNewNote] = useState("");
@@ -52,7 +52,7 @@ const Notes = ({ rewatchableId, type }) => {
       updatedPayload.notes.splice(index, 1); // Remove the note from the array
       try {
         const response = await axios.put(
-          `${import.meta.env.VITE_API_URLL}/${type}/${rewatchableId}`,
+          `${import.meta.env.VITE_API_URL}/${type}/${rewatchableId}`,
           updatedPayload,
           {
             headers: {
@@ -79,7 +79,10 @@ const Notes = ({ rewatchableId, type }) => {
           value={newNote}
           onChange={(event) => setNewNote(event.currentTarget.value)}
         />
-        <Button type="submit" variant="filled">
+        <Button type="submit"             color="#f1580c"
+            size="compact-lg"
+            radius="lg"
+            rightSection={<IconMessageForward size={20} />}>
           Submit
         </Button>
       </form>
