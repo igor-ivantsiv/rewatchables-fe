@@ -1,4 +1,4 @@
-import { SimpleGrid, TextInput } from "@mantine/core";
+import { Divider, Group, SimpleGrid, TextInput } from "@mantine/core";
 import { useEffect, useState } from "react";
 import ListItem from "../components/ListItem";
 import { useRefetchContext } from "../contexts/RefetchContext";
@@ -6,7 +6,7 @@ import { fetchData } from "../helpers/globalFunction";
 
 // ! need to do something about 'not found' text rendering
 const SearchPage = () => {
-  //const { shouldRefetch } = useRefetchContext();
+  const { shouldRefetch } = useRefetchContext();
 
   const [searchMovie, setSearchMovie] = useState("");
   const [searchSeries, setSearchSeries] = useState("");
@@ -31,7 +31,7 @@ const SearchPage = () => {
     setTimeoutId(newTimeout);
 
     return () => clearTimeout(newTimeout);
-  }, [searchMovie, searchSeries]);
+  }, [searchMovie, searchSeries, shouldRefetch]);
 
 
   // remove all results if both search bars empty
@@ -67,6 +67,11 @@ const SearchPage = () => {
   return (
     <>
       <h1>Search</h1>
+      <Group
+        justify="center"
+        gap={20}
+        className="search-bar"
+      >
       <TextInput
         size="md"
         radius="lg"
@@ -85,6 +90,8 @@ const SearchPage = () => {
         name="searchSeries"
         onChange={handleSeriesInput}
       />
+      </Group>
+      <Divider my="md" variant="dashed" />
       {
         searching && 
       
