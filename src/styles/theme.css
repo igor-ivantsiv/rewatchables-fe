@@ -27,3 +27,14 @@ a{
   .listCard:hover{
     transform: scale(1.02);
   }
+  .modal{
+    border-radius: 15px;
+  }
+  .detailsImage{
+    border-radius: 15px;
+  }
+  .pill {
+    background-color: white;
+    border: 1px solid #f1580c;
+    color: #f1580c;
+  }

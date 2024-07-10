@@ -22,20 +22,22 @@ const ListItem = ({ rewatchable }) => {
           </AspectRatio>
         </Card.Section>
         <div className="cardContent">
-          <div className="cardTextDiv">
-            <Group justify="space-between" mt="md" mb="xs">
-              <Text className="cardText" fw={500}>{rewatchable.title}</Text>
-            </Group>
-          </div>
-          <div>
+          <div className="ratingsDiv">
             <Group>
               <Rating
                 fractions={4}
                 name="rating"
                 value={rewatchable.rating}
-                size="lg"
+                size="xl"
                 readOnly
               />
+            </Group>
+          </div>
+          <div className="cardTextDiv">
+            <Group justify="space-between" mt="md" mb="xs">
+              <Text className="cardText" fw={500}>
+                {rewatchable.title}
+              </Text>
             </Group>
           </div>
         </div>
@@ -46,9 +48,23 @@ const ListItem = ({ rewatchable }) => {
         opened={opened}
         onClose={close}
         centered
-        title={rewatchable.title}
+        title={
+          <div style={{ display: "flex", alignItems: "center" }}>
+          <p className="detailsTitle" style={{ marginRight: "10px" }}>{rewatchable.title}</p>
+          <Group>
+            <Rating
+              fractions={4}
+              name="rating"
+              value={rewatchable.rating}
+              size="xl"
+              readOnly
+            />
+          </Group>
+        </div>
+        }
         classNames={{
           title: "customTitle",
+          content: "modal",
         }}
       >
         <RewatchableDetails
