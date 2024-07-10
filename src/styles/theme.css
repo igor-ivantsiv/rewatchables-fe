@@ -1,3 +1,4 @@
+
 a{
     text-decoration: none;
     color: black;
@@ -16,6 +17,10 @@ a{
     border-radius: 15px;
     background-color: #f1580c;
   }
+.button:hover {
+  cursor: pointer;
+  background-color: #f79a6b;
+}
   .listPage {
     max-width: 1500px;
     margin: 0 auto;
@@ -38,3 +43,5 @@ a{
     border: 1px solid #f1580c;
     color: #f1580c;
   }
+.mantine-AppShell-main {
+  background-color: rgba(240, 237, 237, 0.685);}

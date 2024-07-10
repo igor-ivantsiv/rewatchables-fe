@@ -1,7 +1,7 @@
 import { Carousel } from "@mantine/carousel";
 import { useEffect, useState } from "react";
 import { fetchData } from "../helpers/globalFunction";
-import { AspectRatio, Modal } from "@mantine/core";
+import { AspectRatio, Image, Modal } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import RewatchableDetails from "./RewatchableDetails";
 import { useRefetchContext } from "../contexts/RefetchContext";
@@ -44,19 +44,24 @@ const Gallery = ({ type }) => {
   return (
     <>
       <div className="carousel">
-        <Carousel slideSize="50%" height={400} slideGap="lg" loop>
-
+        <Carousel slideSize="70%"  
+        loop 
+        slideGap="lg" 
+        align="start"
+        >
           {
+            
             rewatchables.map(item => (
-          
-              <Carousel.Slide key={item.id}>
-                
-                <img
-                  className="carousel-img"
+              
+              <Carousel.Slide key={`${type}${item.id}`}>
+                <AspectRatio ratio={720 / 1080}>
+                <Image
                   src={item.image}
                   alt={item.title}
                   onClick={() => getDetails(item.id, item.type, item.title)}
+                  className="carousel-img" 
                 />
+                </AspectRatio>
               </Carousel.Slide>
               
             ))
