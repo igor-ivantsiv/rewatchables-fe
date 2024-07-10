@@ -9,51 +9,40 @@ lighter black: rgb(50, 50, 50)
 .appshellNavbar {
   position: relative;
 }
-h1{
-  margin-top: 0px;
-}
-.collapseIcon{
+
+.collapseIcon {
   position: absolute;
   right: -15px;
   top: 50px;
 }
 .logo {
-  height: 46px;;
+  height: 46px;
 }
-.mainHeader{
+.mainHeader {
   height: 70px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin: 0 10px;
 }
-.menuItem{
+.menuItem {
   display: flex;
   align-items: center;
   gap: 14px;
   height: 56px;
 }
-a{
-  text-decoration: none;
-  color: black;
-}
-.active {
-  color: #f1580c;
-}
-.navbarIconDiv{
-  display:flex;
+
+.navbarIconDiv {
+  display: flex;
   align-items: center;
   text-align: center;
   height: 56px;
 }
-.menuText{
+.menuText {
   font-size: 20px;
   font-weight: 400;
 }
-.homepage{
-  max-width: 1500px;
-  margin: 0 auto;
-}
+
 .customTitle {
   font-size: 40px;
   font-weight: bold;
@@ -88,18 +77,29 @@ a{
 }
 
 .mantine-Carousel-viewport {
-  box-shadow: -3px -3px 5px rgba(0, 0, 0, 0.2), 
-              -6px -6px 10px rgba(0, 0, 0, 0.15),
-              -9px -9px 15px rgba(0, 0, 0, 0.1),
-              3px 3px 5px rgba(0, 0, 0, 0.2),
-              6px 6px 10px rgba(0, 0, 0, 0.15),
-              9px 9px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: -3px -3px 5px rgba(0, 0, 0, 0.2),
+    -6px -6px 10px rgba(0, 0, 0, 0.15), -9px -9px 15px rgba(0, 0, 0, 0.1),
+    3px 3px 5px rgba(0, 0, 0, 0.2), 6px 6px 10px rgba(0, 0, 0, 0.15),
+    9px 9px 15px rgba(0, 0, 0, 0.1);
   border-radius: 15px;
   margin-bottom: 2rem;
 }
 
 .btn-div {
   margin-top: 1rem;
+}
+
+.cardContent{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.cardTextDiv{
+  height: 80px;
+}
+.cardText {
+  font-size: 18px;
 }
 
 .suggestion-box {
@@ -126,10 +126,7 @@ a{
   .suggestion-card {
     width: 100%;
   }
-
 }
-
-
 
 /*idea for colors*/
 

@@ -10,6 +10,7 @@ import "@mantine/core/styles.css";
 import "@mantine/dates/styles.css";
 import "@mantine/carousel/styles.css";
 import "./styles/global.css";
+import "./styles/theme.css";
 import theme from "./styles/theme.js";
 import { RefetchProvider } from "./contexts/RefetchContext.jsx";
 
