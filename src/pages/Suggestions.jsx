@@ -222,17 +222,20 @@ const Suggestions = () => {
               withBorder
               className="suggestion-card"
               h="fit-content"
+              w={500}
               radius="md"
             >
               <Card.Section>
-                <AspectRatio ratio={1080 / 720} maw={366} mx="auto">
+                <Center>
+                <AspectRatio ratio={720 / 1080} mx="auto">
                   <Image
                     src={currentRewatchable.image}
-                    height={350}
+                    maw={200}
                     alt="Cover"
                     radius="md"
                   />
                 </AspectRatio>
+                </Center>
               </Card.Section>
 
               <Text fw={500} size="lg" mt="md">

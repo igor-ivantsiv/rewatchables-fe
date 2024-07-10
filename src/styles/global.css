@@ -122,6 +122,12 @@ lighter black: rgb(50, 50, 50)
   font-style: italic;
 }
 
+/*
+.search-bar {
+  margin-bottom: 1rem;
+}
+*/
+
 @media screen and (max-width: 800px) {
   .suggestion-card {
     width: 100%;

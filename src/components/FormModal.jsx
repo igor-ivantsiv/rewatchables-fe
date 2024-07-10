@@ -6,7 +6,6 @@ import {
   NumberInput,
   Rating,
   SimpleGrid,
-  Stack,
   Textarea,
   TextInput,
   Grid,
@@ -34,8 +33,8 @@ const FormModal = ({ action, id, type, closeModal, setShowContent }) => {
     rating: 0.0,
     year: new Date(2024, 1),
     length: "",
-    seasons: 0,
-    episodes: 0,
+    seasons: 1,
+    episodes: 1,
     description: "",
     image: "",
     availableOn: [],
@@ -79,8 +78,8 @@ const FormModal = ({ action, id, type, closeModal, setShowContent }) => {
     formInput.type === "movies"
       ? setFormInput((prevState) => ({
           ...prevState,
-          seasons: 0,
-          episodes: 0,
+          seasons: 1,
+          episodes: 1,
         }))
       : setFormInput((prevState) => ({
           ...prevState,
@@ -202,6 +201,7 @@ const FormModal = ({ action, id, type, closeModal, setShowContent }) => {
             name="title"
             value={formInput.title}
             onChange={handleInput}
+            required
           />
 
           <MultiSelect
@@ -212,6 +212,7 @@ const FormModal = ({ action, id, type, closeModal, setShowContent }) => {
             value={formInput.genre}
             onChange={(event) => handleInput(event, "genre")}
             data-multiselect
+            required
           />
 
           <TextInput
@@ -220,6 +221,7 @@ const FormModal = ({ action, id, type, closeModal, setShowContent }) => {
             name="director"
             value={formInput.director}
             onChange={handleInput}
+            required
           />
 
           <Group>
@@ -257,6 +259,8 @@ const FormModal = ({ action, id, type, closeModal, setShowContent }) => {
                 name="length"
                 value={formInput.length}
                 onChange={handleInput}
+                withAsterisk
+                required
               />
             ) : (
               <>
@@ -268,6 +272,7 @@ const FormModal = ({ action, id, type, closeModal, setShowContent }) => {
                   name="seasons"
                   value={formInput.seasons}
                   onChange={(event) => handleInput(event, "seasons")}
+                  required
                 />
                 <NumberInput
                   label="Episodes"
@@ -277,6 +282,7 @@ const FormModal = ({ action, id, type, closeModal, setShowContent }) => {
                   name="episodes"
                   value={formInput.episodes}
                   onChange={(event) => handleInput(event, "episodes")}
+                  required
                 />
               </>
             )
@@ -289,6 +295,8 @@ const FormModal = ({ action, id, type, closeModal, setShowContent }) => {
             name="description"
             value={formInput.description}
             onChange={handleInput}
+            withAsterisk
+            required
           />
 
           <TextInput
@@ -298,6 +306,8 @@ const FormModal = ({ action, id, type, closeModal, setShowContent }) => {
             name="image"
             value={formInput.image}
             onChange={handleInput}
+            withAsterisk
+            required
           />
 
           <MultiSelect
@@ -307,6 +317,8 @@ const FormModal = ({ action, id, type, closeModal, setShowContent }) => {
             name="availableOn"
             value={formInput.availableOn}
             onChange={(event) => handleInput(event, "availableOn")}
+            withAsterisk
+            required
           />
 
           <TextInput
