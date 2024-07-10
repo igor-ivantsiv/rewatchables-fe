@@ -19,12 +19,8 @@ const AddButton = () => {
             <FormModal action="POST" closeModal={close}/>
         </Modal>
         <Button 
-        className="button"
+            className="button"
             onClick={open}
-            variant="filled" 
-            color="#f1580c" 
-            size="compact-xl" 
-            radius="lg"
             rightSection={<IconSquareRoundedPlus size={26} />}>Add a Rewatchable</Button>
         </>
     );

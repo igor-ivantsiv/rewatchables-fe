@@ -198,13 +198,10 @@ const Suggestions = () => {
               <Text>genre.</Text>
             </Group>
           </Center>
-          <Center className="btn-div">
+          <Center className="suggest-btn-div">
             <Button
               type="submit"
-              variant="filled"
-              color="rgba(194, 58, 58, 1)"
-              size="md"
-              radius="lg"
+              className="button"
               loading={loading}
               loaderProps={{ type: "bars"}}
             >
@@ -218,12 +215,10 @@ const Suggestions = () => {
           {resultFound ? 
             <Card
               shadow="sm"
-              padding="xl"
               withBorder
               className="suggestion-card"
               h="fit-content"
               w={500}
-              radius="md"
             >
               <Card.Section>
                 <Center>
@@ -232,7 +227,7 @@ const Suggestions = () => {
                     src={currentRewatchable.image}
                     maw={200}
                     alt="Cover"
-                    radius="md"
+                    className="suggestion-img"
                   />
                 </AspectRatio>
                 </Center>
@@ -247,9 +242,7 @@ const Suggestions = () => {
               <Button
                 fullWidth
                 mt="md"
-                variant="filled"
-                color="rgba(194, 58, 58, 1)"
-                radius="lg"
+                className="button"
                 onClick={(event) => (handleSubmit(event, currentRewatchable.id))}
                 loading={loading}
                 loaderProps={{ type: "bars"}}

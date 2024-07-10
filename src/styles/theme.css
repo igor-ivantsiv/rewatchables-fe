@@ -1,29 +1,39 @@
-a{
-    text-decoration: none;
-    color: black;
-  }
-  .active {
-    color: #f1580c;
-  }
-  h1{
-    margin-top: 0px;
-  }
-  .homepage{
-    max-width: 1500px;
-    margin: 0 auto;
-  }
-  .button{
-    border-radius: 15px;
-    background-color: #f1580c;
-  }
-  .listPage {
-    max-width: 1500px;
-    margin: 0 auto;
-  }
-  .listCard{
-    max-width: 333px;
-    transition: transform 0.2s;
-  }
-  .listCard:hover{
-    transform: scale(1.02);
-  }
+a {
+  text-decoration: none;
+  color: black;
+}
+.active {
+  color: #f1580c;
+}
+h1 {
+  margin-top: 0px;
+}
+.homepage {
+  max-width: 1500px;
+  margin: 0 auto;
+}
+.button {
+  border-radius: 15px;
+  background-color: #f1580c;
+}
+.button:hover {
+  cursor: pointer;
+  background-color: #f79a6b;
+}
+
+.listPage {
+  max-width: 1500px;
+  margin: 0 auto;
+}
+.listCard {
+  max-width: 333px;
+  transition: transform 0.2s;
+}
+.listCard:hover {
+  transform: scale(1.02);
+}
+
+
+.mantine-AppShell-main {
+  background-color: rgba(240, 237, 237, 0.685);
+}

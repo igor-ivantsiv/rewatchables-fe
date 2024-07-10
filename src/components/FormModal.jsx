@@ -340,10 +340,7 @@ const FormModal = ({ action, id, type, closeModal, setShowContent }) => {
         <Center h={90}>
           <Button
             type="submit"
-            variant="filled"
-            color="rgba(194, 58, 58, 1)"
-            size="md"
-            radius="lg"
+            className="button"
           >
             Save Rewatchable
           </Button>
