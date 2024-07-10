@@ -15,10 +15,33 @@ const Gallery = ({ type }) => {
 
   const [currentItem, setCurrentItem] = useState({});
 
+
+  // shuffle array of results
+  const shuffleResult = (resultsArray) => {
+    for (let i = resultsArray.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [resultsArray[i], resultsArray[j]] = [resultsArray[j], resultsArray[i]]; 
+    }
+    return resultsArray;
+  }
+  
+  // fetch data and shuffle results
+  const fetchAndShuffle = async() => {
+    try {
+      const data = await fetchData(`/${type}`);
+      const shuffled = shuffleResult(data);
+      setRewatchables(shuffled);
+    }
+    catch (error) {
+      console.log("error trying to shuffle: ", error);
+    } 
+  }
+
   // fetch all data on mount
   useEffect(() => {
-    fetchData(`/${type}`, setRewatchables);
+    fetchAndShuffle();
   }, []);
+
 
   // states for modal
   const [opened, { open, close }] = useDisclosure(false);
@@ -37,7 +60,7 @@ const Gallery = ({ type }) => {
   }
 
   useEffect(() => {
-    fetchData(`/${type}`, setRewatchables);
+    fetchAndShuffle();
   }, [shouldRefetch]);
 
 
