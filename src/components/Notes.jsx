@@ -76,6 +76,7 @@ const Notes = ({ rewatchableId, type }) => {
       <form onSubmit={handleSubmit}>
         <h4 className="notesHeader">New Note</h4>
         <Input
+         required
         radius="lg"
           className="notesInput"
           size="lg"
