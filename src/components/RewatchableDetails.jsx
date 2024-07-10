@@ -86,9 +86,9 @@ const RewatchableDetails = ({ rewatchableId, type, close }) => {
             <div className="detailsContent">
               <div className="arrayDiv">
                 {rewatchableDetails.genre &&
-                  rewatchableDetails.genre.map((eachGenre) => {
+                  rewatchableDetails.genre.map((eachGenre, index) => {
                     return (
-                      <Pill className="pill" size="xl">
+                      <Pill key={index} className="pill" size="xl">
                         {eachGenre}
                       </Pill>
                     );
@@ -136,56 +136,56 @@ const RewatchableDetails = ({ rewatchableId, type, close }) => {
               <div className="spaceBetweenDiv">
                 <div className="arrayDiv">
                   {rewatchableDetails.availableOn &&
-                    rewatchableDetails.availableOn.map((eachProvider) => (
-                      <>
+                    rewatchableDetails.availableOn.map((eachProvider, index) => (
+                      <div key={`provider ${index}`}>
                         {eachProvider === "Netflix" ? (
-                          <img
+                          <img key={`provider ${index}`}
                             className="providerLogo"
                             src={Netflix}
                             alt="Netflix"
                           />
                         ) : eachProvider === "Prime Video" ? (
-                          <img
+                          <img key={`provider ${index}`}
                             className="providerLogo"
                             src={PrimeVideo}
                             alt="Prime Video"
                           />
                         ) : eachProvider === "Apple TV" ? (
-                          <img
+                          <img key={`provider ${index}`}
                             className="providerLogo"
                             src={AppleTV}
                             alt="Apple TV"
                           />
                         ) : eachProvider === "HBO Max" ? (
-                          <img
+                          <img key={`provider ${index}`}
                             className="providerLogo"
                             src={HboMax}
                             alt="HBO Max"
                           />
                         ) : eachProvider === "Hulu" ? (
-                          <img className="providerLogo" src={Hulu} alt="Hulu" />
+                          <img key={`provider ${index}`} className="providerLogo" src={Hulu} alt="Hulu" />
                         ) : eachProvider === "Paramount+" ? (
-                          <img
+                          <img key={`provider ${index}`}
                             className="providerLogo"
                             src={ParamountPlus}
                             alt="Paramount Plus"
                           />
                         ) : eachProvider === "Roku" ? (
-                          <img className="providerLogo" src={Roku} alt="Roku" />
+                          <img key={`provider ${index}`} className="providerLogo" src={Roku} alt="Roku" />
                         ) : eachProvider === "Disney+" ? (
-                          <img
+                          <img key={`provider ${index}`}
                             className="providerLogo"
                             src={DisneyPlus}
                             alt="Disney Plus"
                           />
                         ) : eachProvider === "Peacock" ? (
-                          <img
+                          <img key={`provider ${index}`}
                             className="providerLogo"
                             src={Peacock}
                             alt="Peacock"
                           />
                         ) : null}
-                      </>
+                      </div>
                     ))}
                 </div>
                 <p>
