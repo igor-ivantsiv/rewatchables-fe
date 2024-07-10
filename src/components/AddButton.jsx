@@ -1,6 +1,7 @@
 import { Modal, Button } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import FormModal from "./FormModal";
+import { IconSquare, IconSquareRoundedPlus } from "@tabler/icons-react";
 
 
 const AddButton = () => {
@@ -18,14 +19,13 @@ const AddButton = () => {
             <FormModal action="POST" closeModal={close}/>
         </Modal>
         <Button 
+        className="button"
             onClick={open}
             variant="filled" 
-            color="rgba(194, 58, 58, 1)" 
+            color="#f1580c" 
             size="compact-xl" 
             radius="lg"
-        >
-            +
-        </Button>
+            rightSection={<IconSquareRoundedPlus size={26} />}>Add a Rewatchable</Button>
         </>
     );
 }

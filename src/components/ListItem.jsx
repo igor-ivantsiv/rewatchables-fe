@@ -1,4 +1,4 @@
-import { Card, Image, Text, Group, AspectRatio } from "@mantine/core";
+import { Card, Image, Text, Group, AspectRatio, Rating } from "@mantine/core";
 import RewatchableDetails from "./RewatchableDetails";
 import { useDisclosure } from "@mantine/hooks";
 import { Modal } from "@mantine/core";
@@ -8,18 +8,39 @@ const ListItem = ({ rewatchable }) => {
 
   return (
     <>
-      <Card shadow="sm" padding="lg" radius="md" withBorder onClick={open}>
+      <Card
+        className="listCard"
+        shadow="sm"
+        padding="lg"
+        radius="md"
+        withBorder
+        onClick={open}
+      >
         <Card.Section>
-          <AspectRatio ratio={1080 / 720} maw={366} mx="auto">
-            <Image src={rewatchable.image} height={549} alt="Cover" />
+          <AspectRatio ratio={1080 / 720} maw={333} mx="auto">
+            <Image src={rewatchable.image} height={500} alt="Cover" />
           </AspectRatio>
         </Card.Section>
-
-        <Group justify="space-between" mt="md" mb="xs">
-          <Text fw={500}>{rewatchable.title}</Text>
-        </Group>
+        <div className="cardContent">
+          <div className="cardTextDiv">
+            <Group justify="space-between" mt="md" mb="xs">
+              <Text className="cardText" fw={500}>{rewatchable.title}</Text>
+            </Group>
+          </div>
+          <div>
+            <Group>
+              <Rating
+                fractions={4}
+                name="rating"
+                value={rewatchable.rating}
+                size="lg"
+                readOnly
+              />
+            </Group>
+          </div>
+        </div>
       </Card>
-    
+
       <Modal
         size="90%"
         opened={opened}
@@ -30,9 +51,13 @@ const ListItem = ({ rewatchable }) => {
           title: "customTitle",
         }}
       >
-        <RewatchableDetails rewatchableId={rewatchable.id} type={rewatchable.type} close={close}/>
+        <RewatchableDetails
+          rewatchableId={rewatchable.id}
+          type={rewatchable.type}
+          close={close}
+        />
       </Modal>
-      </>
+    </>
   );
 };
 

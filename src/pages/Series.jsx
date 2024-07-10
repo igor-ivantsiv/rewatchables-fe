@@ -1,9 +1,10 @@
 import List from "../components/List";
 
 const Series = () => {
-    return ( <>
+    return ( <> <div className="listPage">
     <h1>My Series</h1>
     <List type="series" />
+    </div>
     </> );
 }
  

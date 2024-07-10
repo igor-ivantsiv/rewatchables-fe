@@ -1,0 +1,29 @@
+a{
+    text-decoration: none;
+    color: black;
+  }
+  .active {
+    color: #f1580c;
+  }
+  h1{
+    margin-top: 0px;
+  }
+  .homepage{
+    max-width: 1500px;
+    margin: 0 auto;
+  }
+  .button{
+    border-radius: 15px;
+    background-color: #f1580c;
+  }
+  .listPage {
+    max-width: 1500px;
+    margin: 0 auto;
+  }
+  .listCard{
+    max-width: 333px;
+    transition: transform 0.2s;
+  }
+  .listCard:hover{
+    transform: scale(1.02);
+  }
