@@ -170,46 +170,48 @@ const Suggestions = () => {
     <>
       <h1>Suggestions</h1>
       <Divider my="md" variant="dashed" />
-      <h2>Suggest a Rewatchable for me!</h2>
-      <Paper p="xl" shadow="lg">
-        <form onSubmit={handleSubmit}>
-          <Center h={100}>
-            <Group>
-              <Text>I'm in the mood for </Text>
-              <NativeSelect
-                size="md"
-                radius="lg"
-                aria-label="Type"
-                data={["movies", "series", "either"]}
-                name="type"
-                value={suggestion.type}
-                onChange={handleInput}
-              />
-              <Text>in the</Text>
-              <NativeSelect
-                size="md"
-                radius="lg"
-                aria-label="Genre"
-                data={genreOptions}
-                name="genre"
-                value={suggestion.genre}
-                onChange={handleInput}
-              />
-              <Text>genre.</Text>
-            </Group>
-          </Center>
-          <Center className="suggest-btn-div">
-            <Button
-              type="submit"
-              className="button"
-              loading={loading}
-              loaderProps={{ type: "bars"}}
-            >
-              Generate
-            </Button>
-          </Center>
-        </form>
-      </Paper>
+      <h2 className="suggest-h">Suggest a Rewatchable for me!</h2>
+      <div className="suggest-paper-wrapper">
+        <Paper p="xl" shadow="lg" className="suggest-paper">
+          <form className="suggest-form" onSubmit={handleSubmit}>
+            <Center h={100}>
+              <Group>
+                <Text>I'm in the mood for </Text>
+                <NativeSelect
+                  size="md"
+                  radius="lg"
+                  aria-label="Type"
+                  data={["movies", "series", "either"]}
+                  name="type"
+                  value={suggestion.type}
+                  onChange={handleInput}
+                />
+                <Text>in the</Text>
+                <NativeSelect
+                  size="md"
+                  radius="lg"
+                  aria-label="Genre"
+                  data={genreOptions}
+                  name="genre"
+                  value={suggestion.genre}
+                  onChange={handleInput}
+                />
+                <Text>genre.</Text>
+              </Group>
+            </Center>
+            <Center className="suggest-btn-div">
+              <Button
+                type="submit"
+                className="button"
+                loading={loading}
+                loaderProps={{ type: "bars"}}
+              >
+                Generate
+              </Button>
+            </Center>
+          </form>
+        </Paper>
+      </div>
       {searching && 
         <div className="suggestion-box">
           {resultFound ? 
@@ -220,25 +222,28 @@ const Suggestions = () => {
               h="fit-content"
               w={500}
             >
-              <Card.Section>
-                <Center>
-                <AspectRatio ratio={720 / 1080} mx="auto">
-                  <Image
-                    src={currentRewatchable.image}
-                    maw={200}
-                    alt="Cover"
-                    className="suggestion-img"
-                  />
-                </AspectRatio>
-                </Center>
-              </Card.Section>
-
-              <Text fw={500} size="lg" mt="md">
-                {currentRewatchable.title}
-              </Text>
-              <Text size="sm" c="dimmed">
-                {currentRewatchable.description}
-              </Text>
+              <div className="suggest-card-top">
+                <div className="suggest-card-section">
+                
+                  <AspectRatio ratio={720 / 1080} mx="auto">
+                    <Image
+                      src={currentRewatchable.image}
+                      maw={200}
+                      alt="Cover"
+                      className="suggestion-img"
+                    />
+                  </AspectRatio>
+                  
+                </div>
+                <div className="suggest-card-section">
+                  <Text fw={500} size="lg" mt="md">
+                    {currentRewatchable.title}
+                  </Text>
+                  <Text size="sm" c="dimmed" className="suggest-card-descr">
+                    {currentRewatchable.description}
+                  </Text>
+                </div>
+              </div>
               <Button
                 fullWidth
                 mt="md"

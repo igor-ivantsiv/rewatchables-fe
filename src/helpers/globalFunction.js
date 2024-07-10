@@ -9,9 +9,16 @@ export const fetchData = async(urlEndpoint, setter) => {
 
         const data = await response.json();
 
-        setter(data);
+        if (setter) {
+            setter(data);
+        }
+        
+        return data;
         
     } catch (error) {
         console.log("An error occured: ", error);
     }
 }
+
+
+
