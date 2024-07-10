@@ -57,6 +57,16 @@ lighter black: rgb(50, 50, 50)
   font-weight: 500;
   margin: 14px 0;
 }
+.detailDiv{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.directors{
+  max-height: 100px; 
+  overflow-y:hidden; 
+  word-wrap: break-word;
+}
 .flexDivDetails{
   display: grid;
   flex-wrap: wrap;
@@ -65,13 +75,18 @@ lighter black: rgb(50, 50, 50)
 .arrayDiv{
 display: flex;
 gap: 10px;
+flex-wrap: wrap;
 }
 .providerLogo {
   height: 50px;
   border-radius: 15px;
 }
-
-
+.spaceBetweenDiv{
+  display: flex;
+  justify-content: space-between;
+align-items: center;
+padding: 10px 0;
+}
 
 .carousel-img:hover {
   cursor: pointer;
@@ -91,8 +106,33 @@ gap: 10px;
   border-radius: 15px;
   margin-bottom: 2rem;
 }
-
-
+.notesFormButton{
+  display: flex;
+  justify-content: end;
+  margin: 14px 0;
+  gap: 20px;
+}
+.notesButtonsDiv{
+display: flex;
+gap: 14px;
+margin: 14px 0;
+}
+.notesInput{
+  height: 80%;
+}
+.note{
+  margin-bottom: 14px;
+  display: flex;
+  list-style-type: none;
+  justify-content: space-between;
+  align-items: center;
+  text-overflow: ellipsis;
+  width: 50%;
+  border: 1px solid #f1580c;
+  border-radius: 15px;
+  padding: 10px;
+}
+.notesHeader{margin: 14px 0}
 .cardContent{
   display: flex;
   flex-direction: column;
