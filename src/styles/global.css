@@ -155,6 +155,10 @@ margin: 14px 0;
 .detailsTitle {
   margin: 0;
 }
+
+
+/* added by th */
+
 .suggestion-box {
   width: 100%;
   display: flex;
@@ -176,6 +180,39 @@ margin: 14px 0;
   margin-top: 1rem;
 }
 
+.suggest-paper {
+  width: fit-content;
+  border-radius: 15px;
+}
+
+.suggest-paper-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.suggest-h {
+  text-align: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #252525
+}
+
+.suggest-card-top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+}
+
+.suggest-card-descr {
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.suggest-card-section {
+  width: 50%;
+}
 
 .error-text {
   margin-top: 0.5rem;
@@ -186,16 +223,35 @@ margin: 14px 0;
   font-style: italic;
 }
 
-/*
-.search-bar {
-  margin-bottom: 1rem;
+.about-h {
+  text-align: center;
+  color: #F5793B
 }
-*/
+
+.about-project-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.about-project {
+  width: 50%;
+}
 
 @media screen and (max-width: 800px) {
   .suggestion-card {
     width: 100%;
-    margin: 1rem;
+    margin: 1rem 0;
+  }
+
+  .suggest-card-top {
+    gap: 0.5rem;
+    align-items: flex-end;
+  }
+
+  .suggest-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
 }
 
