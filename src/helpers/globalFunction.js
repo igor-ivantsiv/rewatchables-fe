@@ -1,9 +1,7 @@
-import { API_URL } from "./constants";
-
 // general function to make get request and set state
 export const fetchData = async(urlEndpoint, setter) => {
     try {
-        const response = await fetch(API_URL + urlEndpoint);
+        const response = await fetch(import.meta.env.VITE_API_URL + urlEndpoint);
 
         if(!response.ok) {
             throw new Error(`HTTP error: ${response}`);
