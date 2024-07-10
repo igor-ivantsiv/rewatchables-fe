@@ -101,7 +101,7 @@ const Notes = ({ rewatchableId, type }) => {
         {payload.notes &&
           payload.notes.map((note, index) => (
             <>
-              <li className="note" key={index}>{index + 1}. {note}
+              <li className="note" key={`note ${index}`}>{index + 1}. {note}
                 <IconTrash size={14} color="grey" onClick={() => deleteNoteHandler(index)} id={index}/>
                 </li>
             </>
