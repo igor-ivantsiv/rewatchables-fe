@@ -1,4 +1,3 @@
-import { API_URL } from "../helpers/constants";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { AspectRatio, Button, Group, Image, Pill, Rating } from "@mantine/core";
@@ -27,7 +26,7 @@ const RewatchableDetails = ({ rewatchableId, type, close }) => {
 
   const fetchRewatchable = async () => {
     try {
-      const response = await axios.get(`${API_URL}/${type}/${rewatchableId}`);
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/${type}/${rewatchableId}`);
       setRewatchableDetails(response.data);
     } catch (error) {
       console.log(error);
@@ -41,7 +40,7 @@ const RewatchableDetails = ({ rewatchableId, type, close }) => {
   const handleDelete = async () => {
     try {
       const response = await axios.delete(
-        `${API_URL}/${type}/${rewatchableId}`
+        `${import.meta.env.VITE_API_URL}/${type}/${rewatchableId}`
       );
       console.log("DELETE request successful. Response:", response.data);
       close();

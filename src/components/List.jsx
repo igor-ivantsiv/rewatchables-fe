@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 
 import ListItem from "../components/ListItem";
 import axios from "axios";
-import { API_URL } from "../helpers/constants";
 import { SimpleGrid } from "@mantine/core";
 import { useRefetchContext } from "../contexts/RefetchContext"
 
@@ -13,7 +12,7 @@ const List = ({ type }) => {
   const [rewatchables, setRewatchables] = useState([]);
   const getRewatchables = async () => {
     try {
-      const response = await axios.get(`${API_URL}/${type}`);
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/${type}`);
       setRewatchables(response.data);
     } catch (error) {
       console.log(error);

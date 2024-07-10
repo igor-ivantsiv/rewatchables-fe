@@ -1,7 +1,6 @@
 import { Button, Textarea } from "@mantine/core";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { API_URL } from "../helpers/constants";
 import { IconTrash } from "@tabler/icons-react";
 
 const Notes = ({ rewatchableId, type }) => {
@@ -10,7 +9,7 @@ const Notes = ({ rewatchableId, type }) => {
 
   const fetchRewatchable = async () => {
     try {
-      const response = await axios.get(`${API_URL}/${type}/${rewatchableId}`);
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/${type}/${rewatchableId}`);
       setPayload(response.data);
     } catch (error) {
       console.log(error);
@@ -30,7 +29,7 @@ const Notes = ({ rewatchableId, type }) => {
 
     try {
       const response = await axios.put(
-        `${API_URL}/${type}/${rewatchableId}`,
+        `${import.meta.env.VITE_API_URL}/${type}/${rewatchableId}`,
         updatedPayload,
         {
           headers: {
@@ -53,7 +52,7 @@ const Notes = ({ rewatchableId, type }) => {
       updatedPayload.notes.splice(index, 1); // Remove the note from the array
       try {
         const response = await axios.put(
-          `${API_URL}/${type}/${rewatchableId}`,
+          `${import.meta.env.VITE_API_URLL}/${type}/${rewatchableId}`,
           updatedPayload,
           {
             headers: {

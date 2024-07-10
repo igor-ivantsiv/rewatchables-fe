@@ -15,7 +15,6 @@ import {
 import { YearPickerInput, TimeInput } from "@mantine/dates";
 import { IconCalendar, IconClock } from "@tabler/icons-react";
 import { useEffect, useState } from "react";
-import { API_URL } from "../helpers/constants";
 import { useNavigate } from "react-router-dom";
 import { fetchData } from "../helpers/globalFunction";
 import { useRefetchContext } from "../contexts/RefetchContext";
@@ -132,8 +131,8 @@ const FormModal = ({ action, id, type, closeModal, setShowContent }) => {
     let url;
 
     action === "POST"
-      ? (url = `${API_URL}/${formInput.type}`)
-      : (url = `${API_URL}/${formInput.type}/${id}`);
+      ? (url = `${import.meta.env.VITE_API_URL}/${formInput.type}`)
+      : (url = `${import.meta.env.VITE_API_URL}/${formInput.type}/${id}`);
 
     try {
       const response = await fetch(url, {
