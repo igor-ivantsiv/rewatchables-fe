@@ -66,7 +66,7 @@ function AppShellComp() {
         <App />
       </AppShell.Main>
 
-      <AppShell.Footer p="md">
+      <AppShell.Footer p="xs">
         <Footer />
       </AppShell.Footer>
     </AppShell>
