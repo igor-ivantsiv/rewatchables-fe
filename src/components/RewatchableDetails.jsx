@@ -23,6 +23,7 @@ import {
   IconTrash,
 } from "@tabler/icons-react";
 import { useDisclosure } from "@mantine/hooks";
+import VideoModal from "./VideoModal";
 
 const RewatchableDetails = ({ rewatchableId, type, closeModal }) => {
   const { setShouldRefetch } = useRefetchContext();
@@ -202,10 +203,7 @@ const RewatchableDetails = ({ rewatchableId, type, closeModal }) => {
                     )}
                 </div>
                 <p>
-                  <a href={rewatchableDetails.trailer} target="_blank">
-                    Watch the trailer{" "}
-                    <IconExternalLink size={18} color="darkgrey" />
-                  </a>
+                  <VideoModal videoUrl={rewatchableDetails.trailer}/>
                 </p>
               </div>
               <div className="notesButtonsDiv">
