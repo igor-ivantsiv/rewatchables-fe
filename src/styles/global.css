@@ -123,6 +123,7 @@ padding: 10px 0;
   justify-content: end;
   margin: 14px 0;
   gap: 20px;
+  padding-bottom: 14px;
 }
 .notesButtonsDiv{
 display: flex;
@@ -166,6 +167,7 @@ margin: 14px 0;
 }
 .detailsTitle {
   margin: 0;
+  font-size: 40px;
 }
 
 
@@ -346,6 +348,19 @@ h1, h2, h3, h4, h5, h6 {
   }
   .mobileDisplay{
     display: block;
+  }
+  .detailsMobile{
+    display: block;
+  }
+  .detailsContentMobile{
+    width: 100%;
+    margin-top: 14px;
+  }
+  .noteMobile{
+    width: 60%;
+  }
+  .detailsTitleMobile{
+    font-size: 22px;
   }
 }
 

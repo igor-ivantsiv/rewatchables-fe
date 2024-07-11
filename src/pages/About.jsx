@@ -3,7 +3,7 @@ import { IconAlien, IconCircleCheck } from "@tabler/icons-react";
 
 const About = () => {
   return (
-    <>
+    <div className="aboutPage">
       <h1>About Us</h1>
       <div className="about-project-wrapper">
         <Paper p="xl" shadow="lg" className="about-project">
@@ -43,9 +43,9 @@ const About = () => {
           <div className="team-icon-div">
             <IconAlien size={50}/>
           </div>
-          <div className="team-name">Team member #1</div>
+          <div className="team-name">Igor Ivantsiv</div>
           <Text c="dimmed">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec orci eu diam vestibulum porttitor a at felis. Proin efficitur laoreet pharetra. Maecenas cursus rutrum nulla, eget commodo sapien lobortis vitae. Cras et dapibus sem, quis interdum lorem. Pellentesque condimentum, felis quis fringilla fermentum, nulla orci tempor leo, sed imperdiet quam leo eget urna. Pellentesque varius diam ut purus commodo malesuada. Nam a neque a sem aliquam pretium et ut urna. Maecenas aliquam sagittis augue, eu gravida eros luctus vel. Maecenas sollicitudin tempus arcu, iaculis lacinia quam rutrum eu. Pellentesque facilisis efficitur hendrerit. Nam et ullamcorper eros. Maecenas vestibulum vehicula porta. 
+        Greetings! My name is Igor. I am 29 years old. I was born in Ukraine, grew up in Israel and England, studied Economics & Business in the Netherlands and then moved to Germany to work as a product manager. Towards the end of 2023 I decided to do a career change to become a software developer and now I am here at the Ironhack Web Development bootcamp creating my first proper React project. My partner and I are excited to share this app with you. Enjoy!
           </Text>
         </Paper>
         <Paper p="xl" shadow="lg" className="about-team">
@@ -62,7 +62,7 @@ const About = () => {
           </Text>
         </Paper>
       </div>
-    </>
+    </div>
   );
 };
 
