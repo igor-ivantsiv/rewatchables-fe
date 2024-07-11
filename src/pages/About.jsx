@@ -52,9 +52,13 @@ const About = () => {
           <div className="team-icon-div">
             <IconAlien size={50}/>
           </div>
-          <div className="team-name">Team member #2</div>
+          <div className="team-name">Thomas Kruithof</div>
           <Text c="dimmed">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec orci eu diam vestibulum porttitor a at felis. Proin efficitur laoreet pharetra. Maecenas cursus rutrum nulla, eget commodo sapien lobortis vitae. Cras et dapibus sem, quis interdum lorem. Pellentesque condimentum, felis quis fringilla fermentum, nulla orci tempor leo, sed imperdiet quam leo eget urna. Pellentesque varius diam ut purus commodo malesuada. Nam a neque a sem aliquam pretium et ut urna. Maecenas aliquam sagittis augue, eu gravida eros luctus vel. Maecenas sollicitudin tempus arcu, iaculis lacinia quam rutrum eu. Pellentesque facilisis efficitur hendrerit. Nam et ullamcorper eros. Maecenas vestibulum vehicula porta. 
+            Hi there! I'm Thomas, I'm 28 years old, born in the Netherlands and currently living in France.
+            I'm on my way to becoming a full stack web developer, with the help of Ironhack bootcamp.
+            This is one of the first React projects I've worked on, it was a lot of fun. 
+            I've learned much from it, and I hope to be making many more apps in the future.
+            <br />I hope you enjoy our app!
           </Text>
         </Paper>
       </div>

@@ -176,7 +176,7 @@ const Suggestions = () => {
           <form className="suggest-form" onSubmit={handleSubmit}>
             <Center h={100}>
               <Group>
-                <Text>I'm in the mood for </Text>
+                <Text c="dimmed">I'm in the mood for </Text>
                 <NativeSelect
                   size="md"
                   radius="lg"
@@ -186,7 +186,7 @@ const Suggestions = () => {
                   value={suggestion.type}
                   onChange={handleInput}
                 />
-                <Text>in the</Text>
+                <Text c="dimmed">in the</Text>
                 <NativeSelect
                   size="md"
                   radius="lg"
@@ -196,7 +196,7 @@ const Suggestions = () => {
                   value={suggestion.genre}
                   onChange={handleInput}
                 />
-                <Text>genre.</Text>
+                <Text c="dimmed">genre.</Text>
               </Group>
             </Center>
             <Center className="suggest-btn-div">
