@@ -333,6 +333,31 @@ iframe {
   max-width: 1500px;
 }
 
+.e404-div {
+  display: flex;
+  justify-content: center;
+}
+
+.e404-h1, .e404-h2 {
+  color: #f1580c;
+  text-align: center;
+  font-weight: bold;
+  font-size: 3rem;
+}
+
+.e404-h2 {
+  color: #252525;
+  font-size: 1.8rem;
+}
+
+.e404-h-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
 
 @media screen and (max-width: 768px) {
   .suggestion-card {
