@@ -1,7 +1,7 @@
 import { Carousel } from "@mantine/carousel";
 import { useEffect, useState } from "react";
 import { fetchData } from "../helpers/globalFunction";
-import { AspectRatio, Image, Modal } from "@mantine/core";
+import { AspectRatio, Group, Image, Modal, Rating } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import RewatchableDetails from "./RewatchableDetails";
 import { useRefetchContext } from "../contexts/RefetchContext";
@@ -48,11 +48,12 @@ const Gallery = ({ type }) => {
 
 
   // on click, get all details of item clicked to pass to details comp
-  const getDetails = (id, type, title) => {
+  const getDetails = (id, type, title, rating) => {
     setCurrentItem(() => ({
       id: id,
       type: type,
       title: title,
+      rating: rating,
     }))
 
     // open modal
@@ -81,7 +82,7 @@ const Gallery = ({ type }) => {
                 <Image
                   src={item.image}
                   alt={item.title}
-                  onClick={() => getDetails(item.id, item.type, item.title)}
+                  onClick={() => getDetails(item.id, item.type, item.title, item.rating)}
                   className="carousel-img" 
                 />
                 </AspectRatio>
@@ -99,7 +100,18 @@ const Gallery = ({ type }) => {
         opened={opened}
         onClose={close}
         centered
-        title={currentItem.title}
+        title={<div style={{ display: "flex", alignItems: "center" }}>
+        <p className="detailsTitle" style={{ marginRight: "10px" }}>{currentItem.title}</p>
+        <Group>
+          <Rating
+            fractions={4}
+            name="rating"
+            value={currentItem.rating}
+            size="xl"
+            readOnly
+          />
+        </Group>
+      </div>}
         classNames={{
           title: "customTitle",
         }}

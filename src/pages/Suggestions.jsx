@@ -167,7 +167,7 @@ const Suggestions = () => {
   ];
 
   return (
-    <>
+    <div className="suggestionsPage">
       <h1>Suggestions</h1>
       <Divider my="md" variant="dashed" />
       <h2 className="suggest-h">Suggest a Rewatchable for me!</h2>
@@ -263,7 +263,7 @@ const Suggestions = () => {
           }
         </div> 
         }
-    </>
+    </div>
   );
 };
 
