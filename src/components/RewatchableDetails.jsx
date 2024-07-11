@@ -1,15 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import {
-  AspectRatio,
-  Badge,
-  Button,
-  Group,
-  Image,
-  Pill,
-  Rating,
-  ScrollArea,
-} from "@mantine/core";
+import { AspectRatio, Badge, Button, Image, Modal, Pill } from "@mantine/core";
 import Netflix from "../assets/NetflixLogo.png";
 import PrimeVideo from "../assets/PrimeVideoLogo.png";
 import AppleTV from "../assets/AppleTVLogo.png";
@@ -31,10 +22,12 @@ import {
   IconExternalLink,
   IconTrash,
 } from "@tabler/icons-react";
+import { useDisclosure } from "@mantine/hooks";
 import VideoModal from "./VideoModal";
 
-const RewatchableDetails = ({ rewatchableId, type, close }) => {
+const RewatchableDetails = ({ rewatchableId, type, closeModal }) => {
   const { setShouldRefetch } = useRefetchContext();
+  const [openedWarn, { open, close }] = useDisclosure(false);
 
   const [rewatchableDetails, setRewatchableDetails] = useState({});
   const [showContent, setShowContent] = useState(true);
@@ -64,6 +57,7 @@ const RewatchableDetails = ({ rewatchableId, type, close }) => {
         `${import.meta.env.VITE_API_URL}/${type}/${rewatchableId}`
       );
       console.log("DELETE request successful. Response:", response.data);
+      closeModal();
       close();
       setShouldRefetch((prevState) => !prevState);
     } catch (error) {
@@ -137,71 +131,118 @@ const RewatchableDetails = ({ rewatchableId, type, close }) => {
               <div className="spaceBetweenDiv">
                 <div className="arrayDiv">
                   {rewatchableDetails.availableOn &&
-                    rewatchableDetails.availableOn.map((eachProvider, index) => (
-                      <div key={`provider ${index}`}>
-                        {eachProvider === "Netflix" ? (
-                          <img key={`provider ${index}`}
-                            className="providerLogo"
-                            src={Netflix}
-                            alt="Netflix"
-                          />
-                        ) : eachProvider === "Prime Video" ? (
-                          <img key={`provider ${index}`}
-                            className="providerLogo"
-                            src={PrimeVideo}
-                            alt="Prime Video"
-                          />
-                        ) : eachProvider === "Apple TV" ? (
-                          <img key={`provider ${index}`}
-                            className="providerLogo"
-                            src={AppleTV}
-                            alt="Apple TV"
-                          />
-                        ) : eachProvider === "HBO Max" ? (
-                          <img key={`provider ${index}`}
-                            className="providerLogo"
-                            src={HboMax}
-                            alt="HBO Max"
-                          />
-                        ) : eachProvider === "Hulu" ? (
-                          <img key={`provider ${index}`} className="providerLogo" src={Hulu} alt="Hulu" />
-                        ) : eachProvider === "Paramount+" ? (
-                          <img key={`provider ${index}`}
-                            className="providerLogo"
-                            src={ParamountPlus}
-                            alt="Paramount Plus"
-                          />
-                        ) : eachProvider === "Roku" ? (
-                          <img key={`provider ${index}`} className="providerLogo" src={Roku} alt="Roku" />
-                        ) : eachProvider === "Disney+" ? (
-                          <img key={`provider ${index}`}
-                            className="providerLogo"
-                            src={DisneyPlus}
-                            alt="Disney Plus"
-                          />
-                        ) : eachProvider === "Peacock" ? (
-                          <img key={`provider ${index}`}
-                            className="providerLogo"
-                            src={Peacock}
-                            alt="Peacock"
-                          />
-                        ) : null}
-                      </div>
-                    ))}
+                    rewatchableDetails.availableOn.map(
+                      (eachProvider, index) => (
+                        <div key={`provider ${index}`}>
+                          {eachProvider === "Netflix" ? (
+                            <img
+                              key={`provider ${index}`}
+                              className="providerLogo"
+                              src={Netflix}
+                              alt="Netflix"
+                            />
+                          ) : eachProvider === "Prime Video" ? (
+                            <img
+                              key={`provider ${index}`}
+                              className="providerLogo"
+                              src={PrimeVideo}
+                              alt="Prime Video"
+                            />
+                          ) : eachProvider === "Apple TV" ? (
+                            <img
+                              key={`provider ${index}`}
+                              className="providerLogo"
+                              src={AppleTV}
+                              alt="Apple TV"
+                            />
+                          ) : eachProvider === "HBO Max" ? (
+                            <img
+                              key={`provider ${index}`}
+                              className="providerLogo"
+                              src={HboMax}
+                              alt="HBO Max"
+                            />
+                          ) : eachProvider === "Hulu" ? (
+                            <img
+                              key={`provider ${index}`}
+                              className="providerLogo"
+                              src={Hulu}
+                              alt="Hulu"
+                            />
+                          ) : eachProvider === "Paramount+" ? (
+                            <img
+                              key={`provider ${index}`}
+                              className="providerLogo"
+                              src={ParamountPlus}
+                              alt="Paramount Plus"
+                            />
+                          ) : eachProvider === "Roku" ? (
+                            <img
+                              key={`provider ${index}`}
+                              className="providerLogo"
+                              src={Roku}
+                              alt="Roku"
+                            />
+                          ) : eachProvider === "Disney+" ? (
+                            <img
+                              key={`provider ${index}`}
+                              className="providerLogo"
+                              src={DisneyPlus}
+                              alt="Disney Plus"
+                            />
+                          ) : eachProvider === "Peacock" ? (
+                            <img
+                              key={`provider ${index}`}
+                              className="providerLogo"
+                              src={Peacock}
+                              alt="Peacock"
+                            />
+                          ) : null}
+                        </div>
+                      )
+                    )}
                 </div>
                 <p>
                   <VideoModal videoUrl={rewatchableDetails.trailer}/>
                 </p>
               </div>
               <div className="notesButtonsDiv">
+                <Button
+                  color="#f1580c"
+                  size="compact-md"
+                  radius="lg"
+                  rightSection={<IconEdit size={20} />}
+                  onClick={() => setShowContent(false)}
+                >
+                  Edit
+                </Button>
+                <Button
+                  color="red"
+                  size="compact-md"
+                  radius="lg"
+                  rightSection={<IconTrash size={20} />}
+                  onClick={open}
+                >
+                  Delete
+                </Button>
+              </div>
+              <Notes
+                type={type}
+                rewatchableId={rewatchableId}
+                fetchRewatchable={fetchRewatchable}
+              />
+            </div>
+            <Modal opened={openedWarn} onClose={close} title = ""withCloseButton={false}>
+              <h3>Are you sure you want to delete this rewatchable?</h3>
+              <div className="warnButtons">
               <Button
                 color="#f1580c"
                 size="compact-md"
                 radius="lg"
-                rightSection={<IconEdit size={20} />}
-                onClick={() => setShowContent(false)}
+                rightSection={<IconArrowBack size={20} />}
+                onClick={close}
               >
-                Edit
+                Back
               </Button>
               <Button
                 color="red"
@@ -213,12 +254,7 @@ const RewatchableDetails = ({ rewatchableId, type, close }) => {
                 Delete
               </Button>
               </div>
-              <Notes
-                type={type}
-                rewatchableId={rewatchableId}
-                fetchRewatchable={fetchRewatchable}
-              />
-            </div>
+            </Modal>
           </div>
         </div>
       ) : (
@@ -229,15 +265,6 @@ const RewatchableDetails = ({ rewatchableId, type, close }) => {
             type={type}
             setShowContent={setShowContent}
           />
-          <Button
-            color="#f1580c"
-            size="compact-xl"
-            radius="lg"
-            rightSection={<IconArrowBack size={20} />}
-            onClick={() => setShowContent(true)}
-          >
-            Back
-          </Button>
         </>
       )}
     </>
