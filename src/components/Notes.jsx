@@ -97,11 +97,11 @@ const Notes = ({ rewatchableId, type }) => {
           </Button>
         </div>
       </form>
-      <ul style={{ padding: 0, marginTop: "-44px" }}>
+      <ul style={{ padding: 0, marginTop: "-62px" }}>
         {payload.notes &&
           payload.notes.map((note, index) => (
             <>
-              <li className="note" key={`note ${index}`}>{index + 1}. {note}
+              <li className="note noteMobile" key={`note ${index}`}>{index + 1}. {note}
                 <IconTrash size={14} color="grey" onClick={() => deleteNoteHandler(index)} id={index}/>
                 </li>
             </>

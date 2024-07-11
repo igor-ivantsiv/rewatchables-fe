@@ -69,7 +69,7 @@ const RewatchableDetails = ({ rewatchableId, type, closeModal }) => {
     <>
       {showContent ? (
         <div>
-          <div className="details">
+          <div className="details detailsMobile">
             <AspectRatio ratio={1080 / 720} maw={373} mx="auto">
               <Image
                 className="detailsImage"
@@ -78,7 +78,7 @@ const RewatchableDetails = ({ rewatchableId, type, closeModal }) => {
                 alt="Cover"
               />
             </AspectRatio>
-            <div className="detailsContent">
+            <div className="detailsContent detailsContentMobile">
               <div className="arrayDiv">
                 {rewatchableDetails.genre &&
                   rewatchableDetails.genre.map((eachGenre, index) => {
@@ -89,7 +89,7 @@ const RewatchableDetails = ({ rewatchableId, type, closeModal }) => {
                     );
                   })}
               </div>
-              <div className="flexDivDetails">
+              <div className="flexDivDetails ">
                 <div className="detailDiv directors">
                   <IconChairDirector size={18} />
                   <p>{rewatchableDetails.director}</p>
@@ -128,7 +128,7 @@ const RewatchableDetails = ({ rewatchableId, type, closeModal }) => {
                 </>
               ) : null}
               <p>{rewatchableDetails.description}</p>
-              <div className="spaceBetweenDiv">
+              <div className="spaceBetweenDiv detailsMobile">
                 <div className="arrayDiv">
                   {rewatchableDetails.availableOn &&
                     rewatchableDetails.availableOn.map(

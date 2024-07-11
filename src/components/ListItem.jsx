@@ -50,7 +50,7 @@ const ListItem = ({ rewatchable }) => {
         centered
         title={
           <div style={{ display: "flex", alignItems: "center" }}>
-          <p className="detailsTitle" style={{ marginRight: "10px" }}>{rewatchable.title}</p>
+          <p className="detailsTitle detailsTitleMobile" style={{ marginRight: "10px" }}>{rewatchable.title}</p>
           <Group>
             <Rating
               fractions={4}
