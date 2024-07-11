@@ -1,12 +1,15 @@
-import { ActionIcon, AppShell, Burger } from "@mantine/core";
+import { ActionIcon, AppShell, Burger, Text } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import App from "./App";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { useState } from "react";
 import {
+  IconBrandGithub,
+  IconExternalLink,
   IconLayoutSidebarLeftCollapse,
   IconLayoutSidebarLeftExpand,
+  IconMail,
 } from "@tabler/icons-react";
 import { Link } from "react-router-dom";
 import AddButton from "./components/AddButton";
@@ -18,6 +21,10 @@ function AppShellComp() {
   const [navbarSmall, setNavbarSmall] = useState(false);
 
   const navbarWidth = navbarSmall ? 62 : 240;
+
+  const footerPaddingLeft = navbarSmall ? "62px" : "240px";
+
+  const isMobile = window.innerWidth < 768;
 
   return (
     <AppShell
@@ -75,7 +82,35 @@ function AppShellComp() {
       </AppShell.Main>
 
       <AppShell.Footer p="xs">
-        <Footer />
+      <footer style={{paddingLeft: footerPaddingLeft}}>
+      <div className="footer-link-wrapper footerMobile" style={isMobile ? { marginLeft: `-${footerPaddingLeft}` } : {}}>
+      <Text size="sm" className="footer-link">
+            <a style={{color: "#f1580c"}}  href="https://github.com/tdot123-1" target="_blank">
+            Thomas <IconBrandGithub size={18} color="#f1580c" /> 
+            </a>
+          </Text>
+          <Text size="sm" className="footer-link">
+            <a style={{color: "#f1580c"}}  href="https://github.com/igor-ivantsiv/" target="_blank">
+            Igor <IconBrandGithub size={18} color="#f1580c" /> 
+            </a>
+          </Text>
+          <a 
+          target="_blank"
+          href="https://github.com/igor-ivantsiv/rewatchables-fe"
+        >
+          <Text size="sm" className="footer-link">
+            GitHub repository
+          </Text>
+          <IconBrandGithub size={18} color="#f1580c" />
+        </a>
+          <Link to={"/about"}>
+          <Text size="sm" className="footer-link">About us</Text>
+          </Link>
+          <Text size="sm" className="footer-link">Made by Thomas & Igor ©</Text>
+    
+
+      </div>
+      </footer>
       </AppShell.Footer>
     </AppShell>
   );

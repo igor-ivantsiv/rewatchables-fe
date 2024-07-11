@@ -301,7 +301,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .footer-link-wrapper {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .mantine-AppShell-footer {
@@ -388,6 +388,12 @@ iframe {
   iframe {
     width: 80vw;
     border-radius: 15px;
+  }
+  .footerMobile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
   }
 }
 
