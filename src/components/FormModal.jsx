@@ -12,7 +12,7 @@ import {
   NativeSelect,
 } from "@mantine/core";
 import { YearPickerInput, TimeInput } from "@mantine/dates";
-import { IconCalendar, IconClock } from "@tabler/icons-react";
+import { IconArrowBack, IconCalendar, IconClock, IconDeviceFloppy } from "@tabler/icons-react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchData } from "../helpers/globalFunction";
@@ -338,14 +338,24 @@ const FormModal = ({ action, id, type, closeModal, setShowContent }) => {
             onChange={handleInput}
           />
         </SimpleGrid>
-        <Center h={90}>
+        <div className="formButtonsDiv">
+        {action === "PUT" ? <Button
+            className="button"
+            size="compact-md"
+            rightSection={<IconArrowBack size={20} />}
+            onClick={() => setShowContent(true)}
+          >
+            Back
+          </Button> : null}
           <Button
             type="submit"
             className="button"
+             size="compact-md"
+             rightSection={<IconDeviceFloppy size={20} />}
           >
-            Save Rewatchable
+            Save
           </Button>
-        </Center>
+          </div>
       </form>
     </>
   );

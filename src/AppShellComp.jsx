@@ -3,12 +3,14 @@ import { useDisclosure } from "@mantine/hooks";
 import App from "./App";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Header from "./components/Header";
 import { useState } from "react";
 import {
   IconLayoutSidebarLeftCollapse,
   IconLayoutSidebarLeftExpand,
 } from "@tabler/icons-react";
+import { Link } from "react-router-dom";
+import AddButton from "./components/AddButton";
+import Logo from "./assets/logo.png"
 
 function AppShellComp() {
   const [opened, { toggle }] = useDisclosure();
@@ -28,8 +30,14 @@ function AppShellComp() {
       padding="md"
     >
       <AppShell.Header>
+      <div className="mainHeader">
         <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
-        <Header />
+        
+        <Link to="/">
+          <img className="logo" src={Logo} alt="logo" />
+        </Link>
+        <AddButton className="add-btn" />
+        </div>
       </AppShell.Header>
 
       <AppShell.Navbar p="md">
@@ -41,7 +49,7 @@ function AppShellComp() {
               aria-label="ActionIcon with size as a number"
               radius="xl"
               onClick={() => setNavbarSmall(false)}
-              className="collapseIcon"
+              className="collapseIcon mobileHidden"
             >
               <IconLayoutSidebarLeftExpand />
             </ActionIcon>
@@ -52,7 +60,7 @@ function AppShellComp() {
               aria-label="ActionIcon with size as a number"
               radius="xl"
               onClick={() => setNavbarSmall(true)}
-              className="collapseIcon"
+              className="collapseIcon mobileHidden"
             >
               <IconLayoutSidebarLeftCollapse />
             </ActionIcon>

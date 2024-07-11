@@ -1,8 +1,11 @@
-
+.bigScreenHidden{
+display: none;}
 .appshellNavbar {
   position: relative;
 }
-
+.headerDiv{
+  display: flex;
+}
 .collapseIcon {
   position: absolute;
   right: -15px;
@@ -43,12 +46,17 @@
 }
 .details {
   display: flex;
+  justify-content: start;
   gap: 32px;
   margin: 5px 10px;
+}
+.detailsContent{
+  width: 72%;
 }
 .detailsContent p{
   font-weight: 500;
   margin: 14px 0;
+  text-wrap: wrap;
 }
 .detailDiv{
   display: flex;
@@ -64,6 +72,12 @@
   display: grid;
   flex-wrap: wrap;
   grid-template-columns: 1fr 1fr 1fr;
+}
+.formButtonsDiv{
+  display: flex;
+  gap: 14px;
+  justify-content: end;
+  margin-top: 14px;;
 }
 .arrayDiv{
 display: flex;
@@ -98,6 +112,11 @@ padding: 10px 0;
     9px 9px 15px rgba(0, 0, 0, 0.1);
   border-radius: 15px;
   margin-bottom: 2rem;
+}
+.warnButtons {
+  display:flex;
+  justify-content: end;
+  gap: 14px;
 }
 .notesFormButton{
   display: flex;
@@ -287,7 +306,7 @@ h1, h2, h3, h4, h5, h6 {
   align-items: flex-end;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 768px) {
   .suggestion-card {
     width: 100%;
     margin: 1rem 0;
@@ -315,6 +334,13 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .about-team-wrapper {
+    display: block;
+  }
+
+  .mobileHidden{
+    display:none
+  }
+  .mobileDisplay{
     display: block;
   }
 }

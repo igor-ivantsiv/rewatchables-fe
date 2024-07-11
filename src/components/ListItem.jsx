@@ -70,7 +70,7 @@ const ListItem = ({ rewatchable }) => {
         <RewatchableDetails
           rewatchableId={rewatchable.id}
           type={rewatchable.type}
-          close={close}
+          closeModal={close}
         />
       </Modal>
     </>
