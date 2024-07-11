@@ -312,6 +312,28 @@ h1, h2, h3, h4, h5, h6 {
   align-items: flex-end;
 }
 
+.trailer-link:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  color: #f1580c
+}
+
+.trailer-404 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #252525;
+  font-weight: bold;
+}
+
+iframe {
+  width: 50vw;
+  height: 100%;
+  border-radius: 15px;
+  max-width: 1500px;
+}
+
+
 @media screen and (max-width: 768px) {
   .suggestion-card {
     width: 100%;
@@ -361,6 +383,11 @@ h1, h2, h3, h4, h5, h6 {
   }
   .detailsTitleMobile{
     font-size: 22px;
+  }
+
+  iframe {
+    width: 80vw;
+    border-radius: 15px;
   }
 }
 

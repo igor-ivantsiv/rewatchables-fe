@@ -1,6 +1,6 @@
-import { Modal } from "@mantine/core";
+import { AspectRatio, Modal } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { IconExternalLink } from "@tabler/icons-react";
+import { IconError404, IconError404Off, IconExternalLink } from "@tabler/icons-react";
 import { useEffect, useState } from "react";
 import YouTube from "react-youtube";
 
@@ -13,21 +13,18 @@ const VideoModal = ({ videoUrl }) => {
     useEffect(() => {
         
         if (videoUrl) {
-            console.log(videoUrl);
             let videoIdStart = -1;
 
             videoIdStart = videoUrl.indexOf("?v=") + 3;
             if (videoIdStart !== -1) {
                 setVideoId(videoUrl.substring(videoIdStart));
-                console.log(videoUrl.substring(videoIdStart))
             }
         }
 
     }, [videoUrl]);
     
     const videoOpts = {
-        height: "390",
-        width: "640",
+        
         playerVars: {
             autoplay: 1,
         },
@@ -38,16 +35,30 @@ const VideoModal = ({ videoUrl }) => {
             <Modal 
             opened={opened} 
             onClose={close} 
-            title="Trailer"
+            withCloseButton={false}
             size="auto"
             centered
+            classNames={{
+                content: "modal"
+            }}
             >
-                <YouTube videoId={videoId} opts={videoOpts}/>
+                {
+                    videoId ?
+                    <AspectRatio ratio={16 / 9}>
+                        <YouTube className="trailer-video" videoId={videoId} opts={videoOpts}/>
+                    </AspectRatio>
+                    :
+                    <div className="trailer-404">
+                        <IconError404 size={50} color="#f1580c"/>
+                        <p>No trailer added yet...</p>
+                    </div>
+                }
+                
             </Modal>
 
-            <span onClick={open}>
+            <span onClick={open} className="trailer-link">
                 Watch the trailer{" "}
-                <IconExternalLink size={18} color="darkgrey" />
+                <IconExternalLink size={18} className="trailer-icon" />
             </span>
         </>
     )
