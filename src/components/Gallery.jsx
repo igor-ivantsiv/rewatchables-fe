@@ -104,7 +104,7 @@ const Gallery = ({ type }) => {
           title: "customTitle",
         }}
       >
-        <RewatchableDetails rewatchableId={currentItem.id} type={currentItem.type} close={close}/>
+        <RewatchableDetails rewatchableId={currentItem.id} type={currentItem.type} closeModal={close}/>
       </Modal>
     </>
   );
