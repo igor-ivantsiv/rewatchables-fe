@@ -21,7 +21,7 @@ const AddButton = () => {
       <Button className="button bigScreenHidden mobileDisplay" onClick={open}>
         <span>
           <IconSquareRoundedPlus size={26} />
-        </span>{" "}
+        </span>
       </Button>
     </>
   );
