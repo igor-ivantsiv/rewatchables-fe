@@ -1,7 +1,7 @@
 import { Modal, Button } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import FormModal from "./FormModal";
-import { IconSquare, IconSquareRoundedPlus } from "@tabler/icons-react";
+import { IconSquareRoundedPlus } from "@tabler/icons-react";
 
 const AddButton = () => {
   const [opened, { open, close }] = useDisclosure(false);
