@@ -8,7 +8,10 @@ const AddButton = () => {
 
   return (
     <>
-      <Modal opened={opened} onClose={close} title="Add Rewatchable" size="80%">
+      <Modal opened={opened} onClose={close} title="Add Rewatchable" size="90%"         classNames={{
+          title: "customTitle",
+          content: "modal",
+        }}>
         <FormModal action="POST" closeModal={close} />
       </Modal>
       <Button
