@@ -114,6 +114,7 @@ const Gallery = ({ type }) => {
       </div>}
         classNames={{
           title: "customTitle",
+          content: "modal",
         }}
       >
         <RewatchableDetails rewatchableId={currentItem.id} type={currentItem.type} closeModal={close}/>
